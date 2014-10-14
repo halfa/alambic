@@ -33,11 +33,14 @@ get sources requirements, then
 Optional ?  ```sudo apt-get install gnome-core-devel gnome-platform-devel```
 
 #### Fedora 20
+Install latexila's dependencies
+
     yum-builddep latexila
 
 ##### References
 - [APT - Build dependencies of a package](http://askubuntu.com/questions/21379/how-do-i-find-the-build-dependencies-of-a-package)
 - [vala-team/ppa](https://launchpad.net/~vala-team/+archive/ubuntu/ppa)
+- [jhbuild for dependencies](https://wiki.gnome.org/Projects/Jhbuild/Dependencies/Fedora)
 
 Install it
 ------------
@@ -46,21 +49,6 @@ _Maybe this step can be skipped with appropriate packages ?_
 
 1. Configure *gnome-commons* by using ``` ./autogen.sh ```
 2. Build and install ```sudo make install```
-
-_Here comes the real thing:_
-**GTK+ 3.14 is not avaible !**
-
-    if(linux.distrib == "Ubuntu 10.04")
-        upgradeTo("Ubuntu 10.10");
-
-With some googling, can be done using this:
-
-    sudo update-manager -d
-
-Now reboot.
-Compile.
-Pray.
-
 
 For later - Setup a working dev-env
 -------------------------------------
