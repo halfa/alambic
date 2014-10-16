@@ -15,7 +15,7 @@ The downloadseption
 2. use it to clone gnome's latexila repo with
 
         git clone git://git.gnome.org/latexila
-3. now the tools : ```git clone git://git.gnome.org/gnome-commons```
+3. now the tools : ```git clone git://git.gnome.org/gnome-common```
 4. activate the source repo in source.list and refresh packet manager 
 5. install some packages(1) :
 
