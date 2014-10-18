@@ -3,8 +3,8 @@ Jhbuild is awesome
 
 This is how Gnome describe Jhbuild:
 
-	JHBuild is the recommended way to build and run GNOME development code. It will download the code, 
-    configure and build it for you, in a way that does not interfere with or modify your existing system
+> Jhbuild is the recommended way to build and run GNOME development code. It will download the code, 
+> configure and build it for you, in a way that does not interfere with or modify your existing system
 
 Installation
 ------------
@@ -12,8 +12,8 @@ Installation
 Follow these instructions -> [Jhbuild](https://wiki.gnome.org/HowDoI/Jhbuild)
 [Dependencies under Fedora](https://wiki.gnome.org/Projects/Jhbuild/Dependencies/Fedora)
 
-Usage
------
+Install a software for me please
+--------------------------------
 
 To install and build latexila and (quite) all his dependencies use :
 
@@ -34,3 +34,5 @@ If you got” *configure: error: vapigen not found*” you may install vala :
 
     jhbuild buildone vala
 
+
+The Latexila source folder is located in *prefix_install*/jhbuild/checkout/latexila. Remember <code>ln -s </code>
