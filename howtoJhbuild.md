@@ -10,8 +10,8 @@ Installation
 
 
 
-Follow these instructiosn -> [Jhbuild](https://wiki.gnome.org/HowDoI/Jhbuild)
-
+Follow these instructions -> [Jhbuild](https://wiki.gnome.org/HowDoI/Jhbuild)
+[Dependencies under Fedora](https://wiki.gnome.org/Projects/Jhbuild/Dependencies/Fedora)
 
 Tips
 ====
