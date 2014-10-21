@@ -37,6 +37,12 @@ Install latexila's dependencies
 
     yum-builddep latexila
 
+OR
+
+Install Jhbuild.
+
+To learn how to install Jhubuild and then compile Latexila, read the “HowtoJhbuild.md” file!
+
 ##### References
 - [APT - Build dependencies of a package](http://askubuntu.com/questions/21379/how-do-i-find-the-build-dependencies-of-a-package)
 - [vala-team/ppa](https://launchpad.net/~vala-team/+archive/ubuntu/ppa)
