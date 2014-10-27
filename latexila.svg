@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="45cm" height="19cm" viewBox="39 59 900 375" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="100" y="60" width="433.5" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="60" width="433.5" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="316.75" y="76">&lt;&lt;Window&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="316.75" y="95">MainWindow</text>
+    <rect style="fill: #ffffff" x="100" y="104" width="433.5" height="164"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="104" width="433.5" height="164"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="118">-_action_entries: Gtk.ActionEntry[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="134">-_toggle_action_entries: ToggleActionEntry[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="150">+default_location: string = Environment.get_home_dir ()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="166">-_statusbar: CustomStatusbar</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="182">-_ui_manager: UIManager</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="198">-_action_group: Gtk.ActionGroup</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="214">-_latex_action_group: Gtk.ActionGroup</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="230">-_main_window_file: MainWindowFile</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="246">+_main_window_edit: MainWindowEdit</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="262">+</text>
+    <rect style="fill: #ffffff" x="100" y="268" width="433.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="268" width="433.5" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="40" y="360" width="194.8" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="360" width="194.8" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="137.4" y="376">&lt;&lt;Notebook&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="137.4" y="395">DocumentsPanel</text>
+    <rect style="fill: #ffffff" x="40" y="404" width="194.8" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="404" width="194.8" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="43" y="418">+active_tab: DocumentTab</text>
+    <rect style="fill: #ffffff" x="40" y="424" width="194.8" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="424" width="194.8" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,301.172 316.75,324.495 137.4,324.495 137.4,358.991 "/>
+    <polygon style="fill: #ffffff" points="316.75,276 321.55,290 316.75,304 311.95,290 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,276 321.55,290 316.75,304 311.95,290 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="720" y="300" width="158.2" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="300" width="158.2" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="799.1" y="316">&lt;&lt;Menu&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="799.1" y="335">MainWindowFile</text>
+    <rect style="fill: #ffffff" x="720" y="344" width="158.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="344" width="158.2" height="8"/>
+    <rect style="fill: #ffffff" x="720" y="352" width="158.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="352" width="158.2" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="720" y="220" width="160.95" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="220" width="160.95" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="800.475" y="236">&lt;&lt;Menu&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="800.475" y="255">MainWindowEdit</text>
+    <rect style="fill: #ffffff" x="720" y="264" width="160.95" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="264" width="160.95" height="8"/>
+    <rect style="fill: #ffffff" x="720" y="272" width="160.95" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="272" width="160.95" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="720" y="120" width="217.15" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="120" width="217.15" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="828.575" y="136">&lt;&lt;Menu&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="828.575" y="155">MainWindowDocument</text>
+    <rect style="fill: #ffffff" x="720" y="164" width="217.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="164" width="217.15" height="8"/>
+    <rect style="fill: #ffffff" x="720" y="172" width="217.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="172" width="217.15" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="559.678,168 633.748,168 633.748,250 718.99,250 "/>
+    <polygon style="fill: #ffffff" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="559.678,168 633.748,168 633.748,330 718.99,330 "/>
+    <polygon style="fill: #ffffff" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="559.678,168 633.75,168 633.75,150 718.993,150 "/>
+    <polygon style="fill: #ffffff" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="273" y="357" width="219.35" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="273" y="357" width="219.35" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="382.675" y="376">MainWindowBuildTools</text>
+    <rect style="fill: #ffffff" x="273" y="385" width="219.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="273" y="385" width="219.35" height="8"/>
+    <rect style="fill: #ffffff" x="273" y="393" width="219.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="273" y="393" width="219.35" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,302.178 316.75,323.501 382.675,323.501 382.675,355.994 "/>
+    <polygon style="fill: #ffffff" points="316.75,277.007 321.55,291.007 316.75,305.007 311.95,291.007 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,277.007 321.55,291.007 316.75,305.007 311.95,291.007 "/>
+  </g>
+</svg>
