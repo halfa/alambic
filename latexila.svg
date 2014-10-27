@@ -1,99 +1,173 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
-<svg width="45cm" height="19cm" viewBox="39 59 900 375" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="51cm" height="35cm" viewBox="19 381 1020 694" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <g>
-    <rect style="fill: #ffffff" x="100" y="60" width="433.5" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="60" width="433.5" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="316.75" y="76">&lt;&lt;Window&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="316.75" y="95">MainWindow</text>
-    <rect style="fill: #ffffff" x="100" y="104" width="433.5" height="164"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="104" width="433.5" height="164"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="118">-_action_entries: Gtk.ActionEntry[]</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="134">-_toggle_action_entries: ToggleActionEntry[]</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="150">+default_location: string = Environment.get_home_dir ()</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="166">-_statusbar: CustomStatusbar</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="182">-_ui_manager: UIManager</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="198">-_action_group: Gtk.ActionGroup</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="214">-_latex_action_group: Gtk.ActionGroup</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="230">-_main_window_file: MainWindowFile</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="246">+_main_window_edit: MainWindowEdit</text>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="103" y="262">+</text>
-    <rect style="fill: #ffffff" x="100" y="268" width="433.5" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="100" y="268" width="433.5" height="8"/>
+    <rect style="fill: #ffffff" x="200" y="540" width="433.5" height="58"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="200" y="540" width="433.5" height="58"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="416.75" y="556">&lt;&lt;Window&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="416.75" y="575">MainWindow</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="416.75" y="590.5">Manage main window and documents</text>
+    <rect style="fill: #ffffff" x="200" y="598" width="433.5" height="164"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="200" y="598" width="433.5" height="164"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="612">-_action_entries: Gtk.ActionEntry[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="628">-_toggle_action_entries: ToggleActionEntry[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="644">+default_location: string = Environment.get_home_dir ()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="660">-_statusbar: CustomStatusbar</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="676">-_ui_manager: UIManager</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="692">-_action_group: Gtk.ActionGroup</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="708">-_latex_action_group: Gtk.ActionGroup</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="724">-_main_window_file: MainWindowFile</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="740">+_main_window_edit: MainWindowEdit</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="203" y="756">+</text>
+    <rect style="fill: #ffffff" x="200" y="762" width="433.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="200" y="762" width="433.5" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="40" y="360" width="194.8" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="360" width="194.8" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="137.4" y="376">&lt;&lt;Notebook&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="137.4" y="395">DocumentsPanel</text>
-    <rect style="fill: #ffffff" x="40" y="404" width="194.8" height="20"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="404" width="194.8" height="20"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="43" y="418">+active_tab: DocumentTab</text>
-    <rect style="fill: #ffffff" x="40" y="424" width="194.8" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="40" y="424" width="194.8" height="8"/>
+    <rect style="fill: #ffffff" x="140" y="800" width="194.8" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="800" width="194.8" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="237.4" y="816">&lt;&lt;Notebook&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="237.4" y="835">DocumentsPanel</text>
+    <rect style="fill: #ffffff" x="140" y="844" width="194.8" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="844" width="194.8" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="143" y="858">+active_tab: DocumentTab</text>
+    <rect style="fill: #ffffff" x="140" y="864" width="194.8" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="864" width="194.8" height="8"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,301.172 316.75,324.495 137.4,324.495 137.4,358.991 "/>
-    <polygon style="fill: #ffffff" points="316.75,276 321.55,290 316.75,304 311.95,290 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,276 321.55,290 316.75,304 311.95,290 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,795.172 416.75,836 335.806,836 "/>
+    <polygon style="fill: #ffffff" points="416.75,770 421.55,784 416.75,798 411.95,784 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,770 421.55,784 416.75,798 411.95,784 "/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="720" y="300" width="158.2" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="300" width="158.2" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="799.1" y="316">&lt;&lt;Menu&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="799.1" y="335">MainWindowFile</text>
-    <rect style="fill: #ffffff" x="720" y="344" width="158.2" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="344" width="158.2" height="8"/>
-    <rect style="fill: #ffffff" x="720" y="352" width="158.2" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="352" width="158.2" height="8"/>
+    <rect style="fill: #ffffff" x="820" y="740" width="158.2" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="740" width="158.2" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="899.1" y="759">MainWindowFile</text>
+    <rect style="fill: #ffffff" x="820" y="768" width="158.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="768" width="158.2" height="8"/>
+    <rect style="fill: #ffffff" x="820" y="776" width="158.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="776" width="158.2" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="720" y="220" width="160.95" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="220" width="160.95" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="800.475" y="236">&lt;&lt;Menu&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="800.475" y="255">MainWindowEdit</text>
-    <rect style="fill: #ffffff" x="720" y="264" width="160.95" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="264" width="160.95" height="8"/>
-    <rect style="fill: #ffffff" x="720" y="272" width="160.95" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="272" width="160.95" height="8"/>
+    <rect style="fill: #ffffff" x="820" y="660" width="160.95" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="660" width="160.95" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="900.475" y="679">MainWindowEdit</text>
+    <rect style="fill: #ffffff" x="820" y="688" width="160.95" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="688" width="160.95" height="8"/>
+    <rect style="fill: #ffffff" x="820" y="696" width="160.95" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="696" width="160.95" height="8"/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="720" y="120" width="217.15" height="44"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="120" width="217.15" height="44"/>
-    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="828.575" y="136">&lt;&lt;Menu&gt;&gt;</text>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="828.575" y="155">MainWindowDocument</text>
-    <rect style="fill: #ffffff" x="720" y="164" width="217.15" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="164" width="217.15" height="8"/>
-    <rect style="fill: #ffffff" x="720" y="172" width="217.15" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="720" y="172" width="217.15" height="8"/>
+    <rect style="fill: #ffffff" x="820" y="560" width="217.15" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="560" width="217.15" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="928.575" y="579">MainWindowDocument</text>
+    <rect style="fill: #ffffff" x="820" y="588" width="217.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="588" width="217.15" height="8"/>
+    <rect style="fill: #ffffff" x="820" y="596" width="217.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="820" y="596" width="217.15" height="8"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="559.678,168 633.748,168 633.748,250 718.99,250 "/>
-    <polygon style="fill: #ffffff" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="659.678,655 733.748,655 733.748,682 818.99,682 "/>
+    <polygon style="fill: #ffffff" points="634.507,655 648.507,650.2 662.507,655 648.507,659.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="634.507,655 648.507,650.2 662.507,655 648.507,659.8 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="559.678,168 633.748,168 633.748,330 718.99,330 "/>
-    <polygon style="fill: #ffffff" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="659.678,655 733.748,655 733.748,762 818.99,762 "/>
+    <polygon style="fill: #ffffff" points="634.507,655 648.507,650.2 662.507,655 648.507,659.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="634.507,655 648.507,650.2 662.507,655 648.507,659.8 "/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="559.678,168 633.75,168 633.75,150 718.993,150 "/>
-    <polygon style="fill: #ffffff" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="534.507,168 548.507,163.2 562.507,168 548.507,172.8 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="659.678,655 733.75,655 733.75,582 818.993,582 "/>
+    <polygon style="fill: #ffffff" points="634.507,655 648.507,650.2 662.507,655 648.507,659.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="634.507,655 648.507,650.2 662.507,655 648.507,659.8 "/>
   </g>
   <g>
-    <rect style="fill: #ffffff" x="273" y="357" width="219.35" height="28"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="273" y="357" width="219.35" height="28"/>
-    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="382.675" y="376">MainWindowBuildTools</text>
-    <rect style="fill: #ffffff" x="273" y="385" width="219.35" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="273" y="385" width="219.35" height="8"/>
-    <rect style="fill: #ffffff" x="273" y="393" width="219.35" height="8"/>
-    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="273" y="393" width="219.35" height="8"/>
+    <rect style="fill: #ffffff" x="520" y="800" width="219.35" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="800" width="219.35" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="629.675" y="819">MainWindowBuildTools</text>
+    <rect style="fill: #ffffff" x="520" y="828" width="219.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="828" width="219.35" height="8"/>
+    <rect style="fill: #ffffff" x="520" y="836" width="219.35" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="836" width="219.35" height="8"/>
   </g>
   <g>
-    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,302.178 316.75,323.501 382.675,323.501 382.675,355.994 "/>
-    <polygon style="fill: #ffffff" points="316.75,277.007 321.55,291.007 316.75,305.007 311.95,291.007 "/>
-    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="316.75,277.007 321.55,291.007 316.75,305.007 311.95,291.007 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,796.179 416.75,822 518.993,822 "/>
+    <polygon style="fill: #ffffff" points="416.75,771.007 421.55,785.007 416.75,799.007 411.95,785.007 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,771.007 421.55,785.007 416.75,799.007 411.95,785.007 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="180" y="920" width="166.6" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="180" y="920" width="166.6" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="263.3" y="936">&lt;&lt;Statusbar&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="263.3" y="955">CustomStatusbar</text>
+    <rect style="fill: #ffffff" x="180" y="964" width="166.6" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="180" y="964" width="166.6" height="8"/>
+    <rect style="fill: #ffffff" x="180" y="972" width="166.6" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="180" y="972" width="166.6" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="20" y="400" width="96.7" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="20" y="400" width="96.7" height="44"/>
+    <rect style="fill: #ffffff" x="20" y="382" width="30" height="18"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="20" y="382" width="30" height="18"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="26" y="433.9">
+      <tspan x="26" y="433.9">Glib</tspan>
+    </text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="26" y="417.9">&lt;&lt;Library&gt;&gt;</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="520" y="880" width="219.15" height="56"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="880" width="219.15" height="56"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="629.575" y="899">MainWindowStructure</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="629.575" y="914.5">stuff for the structure (the list of</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="629.575" y="928.5">chapters, sections, ... of a document)</text>
+    <rect style="fill: #ffffff" x="520" y="936" width="219.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="936" width="219.15" height="8"/>
+    <rect style="fill: #ffffff" x="520" y="944" width="219.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="520" y="944" width="219.15" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="140" y="1000" width="206.3" height="58"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="1000" width="206.3" height="58"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="243.15" y="1016">&lt;&lt;Namespace&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="243.15" y="1035">Utils</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="243.15" y="1050.5">Utilities for String, URI, Path and UI</text>
+    <rect style="fill: #ffffff" x="140" y="1058" width="206.3" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="1058" width="206.3" height="8"/>
+    <rect style="fill: #ffffff" x="140" y="1066" width="206.3" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="140" y="1066" width="206.3" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,796.167 416.75,900 263.3,900 263.3,919.019 "/>
+    <polygon style="fill: #ffffff" points="416.75,770.995 421.55,784.995 416.75,798.995 411.95,784.995 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,770.995 421.55,784.995 416.75,798.995 411.95,784.995 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,796.135 416.75,860 629.575,860 629.575,878.997 "/>
+    <polygon style="fill: #ffffff" points="416.75,770.963 421.55,784.963 416.75,798.963 411.95,784.963 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="416.75,770.963 421.55,784.963 416.75,798.963 411.95,784.963 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="349.297" y="385.73" width="133.4" height="58"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="349.297" y="385.73" width="133.4" height="58"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="415.997" y="401.73">&lt;&lt;Application&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="415.997" y="420.73">LatexilaApp</text>
+    <text font-size="11.2" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:normal" x="415.997" y="436.23">Set application theme</text>
+    <rect style="fill: #ffffff" x="349.297" y="443.73" width="133.4" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="349.297" y="443.73" width="133.4" height="8"/>
+    <rect style="fill: #ffffff" x="349.297" y="451.73" width="133.4" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="349.297" y="451.73" width="133.4" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="415.997,485.91 415.997,506.866 416.75,506.866 416.75,538.993 "/>
+    <polygon style="fill: #ffffff" points="415.997,460.739 420.797,474.739 415.997,488.739 411.197,474.739 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="415.997,460.739 420.797,474.739 415.997,488.739 411.197,474.739 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="348.289,422.73 236.997,422.73 236.997,422 124.411,422 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="137.059,417 121.059,422 137.059,427 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke-dasharray: 8; stroke: #000000" points="200,656 200,660 68.35,660 68.35,451.599 "/>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="73.35,464.246 68.35,448.246 63.35,464.246 "/>
   </g>
 </svg>
