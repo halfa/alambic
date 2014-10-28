@@ -1,1 +1,13 @@
+# Don't commit LaTeXila files
+*.tex~
+*.toc
+*.log
+*.pdf
+*.aux
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+
+# Dia tmp files
 *.dia~
+
