@@ -7,7 +7,7 @@ We are a small team of 3rd year french students in computer science at the INSA 
 **Our goal is to improve autocompletion in LaTeXila, and maybe more...**
 
 LaTeXila is a LaTeX editor for the Gnome project.
-If you don't know it, check[the LaTeXila Gnome project page](https://wiki.gnome.org/Apps/LaTeXila)
+If you don't know it, check [the Gnome project page](https://wiki.gnome.org/Apps/LaTeXila)
 
 Objectives
 ----------
