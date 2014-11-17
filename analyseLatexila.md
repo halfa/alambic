@@ -25,3 +25,10 @@ Use of two ```main```:
 - one for command line call
 - one for app call 
 
+
+Interesting files
+-----------------------
+
+- document -> parser
+- document_structure -> variables and structures to describe a document
+- completion -> ```CompletionProvider```

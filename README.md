@@ -15,7 +15,7 @@ By order of importance (to be completed)
 
   - improve autocompletion
   - provide a guide (En/Fr) for contributors
-  - fix bad behavior when using Gnome's 'Darck theme'
+  - fix bad behavior when using Gnome's 'Dark theme'
 
 The Team
 --------
