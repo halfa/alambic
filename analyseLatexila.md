@@ -26,9 +26,14 @@ Use of two ```main```:
 - one for app call 
 
 
-Interesting files
+Interesting files/methods
 -----------------------
 
 - document -> parser
 - document_structure -> variables and structures to describe a document
+	- get_markup_type
+	- search_markup
+	- get_markup_content
+	- handle_item
+	
 - completion -> ```CompletionProvider```
