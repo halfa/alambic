@@ -1,5 +1,5 @@
 # Don't commit LaTeXila files
-*.tex~
+*~
 *.toc
 *.log
 *.pdf
@@ -7,7 +7,4 @@
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-
-# Dia tmp files
-*.dia~
 
