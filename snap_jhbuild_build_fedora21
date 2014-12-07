@@ -1,0 +1,44 @@
+I: Deleting .la file: u'/opt/gnome/_jhbuild/root-gdk-pixbuf/opt/gnome/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-jpeg.la'
+I: Deleting .la file: u'/opt/gnome/_jhbuild/root-gdk-pixbuf/opt/gnome/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-qtif.la'
+I: Deleting .la file: u'/opt/gnome/_jhbuild/root-gdk-pixbuf/opt/gnome/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-ico.la'
+I: Deleting .la file: u'/opt/gnome/_jhbuild/root-gdk-pixbuf/opt/gnome/lib/gdk-pixbuf-2.0/2.10.0/loaders/libpixbufloader-pnm.la'
+I: Deleting .la file: u'/opt/gnome/_jhbuild/root-gdk-pixbuf/opt/gnome/lib/libgdk_pixbuf-2.0.la'
+I: Déplacement du DESTDIR u'/opt/gnome/_jhbuild/root-gdk-pixbuf' temporaire dans le préfixe de construction
+I: 0 files remaining from previous build
+I: Installation terminée : 214 fichiers copiés
+I: Lancement du script de déclenchement après l'installation : 'gdk-pixbuf'
+/bin/sh /home/maximilien/INSA/jhbuild/triggers/gdk-pixbuf.trigger
+*** Extraction de at-spi2-core *** [13/24]
+git remote set-url origin git://git.gnome.org/at-spi2-core
+git remote update origin
+Récupération de origin
+git rebase origin/master
+La branche courante master est à jour.
+*** Construction de at-spi2-core *** [13/24]
+make -j 5
+CDPATH="${ZSH_VERSION+.}:" && cd . && /bin/sh /home/maximilien/INSA/gnome/at-spi2-core/config/missing aclocal-1.13 -I m4 
+/home/maximilien/INSA/gnome/at-spi2-core/config/missing: ligne 81: aclocal-1.13 : commande introuvable
+WARNING: 'aclocal-1.13' is missing on your system.
+         You should only need it if you modified 'acinclude.m4' or
+         'configure.ac' or m4 files included by 'configure.ac'.
+         The 'aclocal' program is part of the GNU Automake package:
+         <http://www.gnu.org/software/automake>
+         It also requires GNU Autoconf, GNU m4 and Perl in order to run:
+         <http://www.gnu.org/software/autoconf>
+         <http://www.gnu.org/software/m4/>
+         <http://www.perl.org/>
+Makefile:481: recipe for target 'aclocal.m4' failed
+make: *** [aclocal.m4] Error 127
+*** Erreur durant l'étape « build » de at-spi2-core: ########## Erreur lors de l'exécution de make -j 5 *** [13/24]
+
+  [1] Relancer l'étape build
+  [2] Ignorer l'erreur et continuer à l'étape install
+  [3] Abandonner ce module
+  [4] Démarrer un shell
+  [5] Recharger la configuration
+  [6] Aller à l'étape « effacer le répertoire et recommencer »
+  [7] Aller à l'étape « configure »
+  [8] Aller à l'étape « clean »
+  [9] Aller à l'étape « distclean »
+choix : 
+

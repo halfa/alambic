@@ -1,4 +1,4 @@
-#Where the method "parse" from DocumentStructure is called
+# Where the method "parse" from DocumentStructure is called
 
 ```VALA
 public DocumentStructure get_structure ()
@@ -13,4 +13,5 @@ public DocumentStructure get_structure ()
 ```
 
 There is a parser for projects.
+
 
