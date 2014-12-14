@@ -33,10 +33,13 @@ The start
 ### The basics
 1. Install some useful packets for 
 	```BASH
-	sudo yum install git gcc```
-2. Clone Latexila's repository
+	sudo yum install git gcc
+	```
+
+2. Clone Latexila's repository (not required)
 	```BASH
-	git clone git://git.gnome.org/latexila ```
+	git clone git://git.gnome.org/latexila
+	```
 
 ### Install Jhbuild
 Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
@@ -46,24 +49,47 @@ Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 	mkdir ~/jhbuild
 	cd ~/jhbuild
 ```
+
 2. Make a shadow cole of the repo
 ```BASH
 	git clone --depth=1 git://git.gnome.org/jhbuild
 ```
+
 3. Install it _no root needed_
 ```BASH
 	./autogen.sh --simple-install
  	make
  	make install
 ```
-4. Now if you try to run, you will have something like this:
+
+Now you can call jhbuil from the command line !
+
+### Install latexila using jhbuild
+
+1. Get a config file sample at [swilmet's page](https://people.gnome.org/~swilmet/jhbuildrc-latexila).
+2. Put it in ```/home/<user>/.config/jhbuildrc```
+3. Either change the prefix '/opt/gnome' or make sure of the '/opt' access right
+
+4. Get all the dependencies from the git repositories.
+This can take a very~ long~ time~ if you have a laptop and a not-so-good internet conection.
+
+> Average time is half an hour on a desktop with fiber
+
 ```BASH
-	$ jhbuild
-	bash: jhbuild: unkown command
+	jhbuild update jhbuild
+	jhbuild update latexila
 ```
-	That's because ```make install``` put jhbuild in a pretty unusual space:
+
+> If you have an error, just use the choice you are given.
+> At _hicolor-icon-theme_ for example, use choice ```1. Retry checkout```
+
+### Build Latexila
+
+1. Install system dependencies
 ```BASH
-	Creating /home/<username>/.local/bin/jhbuild
-	Creating /home/<username>/.local/share/applications/jhbuild.desktop
+	jhbuild sysdep --install
 ```
-	_Precedent output_
+> Jhbuild will ask for root access during the process
+
+2. Building the software
+
