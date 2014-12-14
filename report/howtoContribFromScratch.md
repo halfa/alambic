@@ -30,25 +30,39 @@ You can copy/paste in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'
 The start
 ---------
 
-### (1) The basics
-1. Install git
-	```BASH	sudo yum install git ```
+### The basics
+1. Install some useful packets for 
+	```BASH
+	sudo yum install git gcc```
 2. Clone Latexila's repository
-	```BASH	git clone git://git.gnome.org/latexila ```
+	```BASH
+	git clone git://git.gnome.org/latexila ```
 
-### (2) Install Jhbuild
+### Install Jhbuild
 Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 
 1. Creat a jhbuid directory where you want
-```BASH
+	```BASH
 	mkdir ~/jhbuild
 	cd ~/jhbuild
-```
+	```
 2. Make a shadow cole of the repo
-	```BASH git clone --depth=1 git://git.gnome.org/jhbuild ```
-3. Install it
-```BASH
+	```BASH
+	git clone --depth=1 git://git.gnome.org/jhbuild ```
+3. Install it _no root needed_
+	```BASH
 	./autogen.sh --simple-install
  	make
  	make install
-```
+	```
+4. Now if you try to run, you will have something like this:
+	```BASH
+	$ jhbuild
+	bash: jhbuild: unkown command
+	```
+	That's because ```make install``` put jhbuild in a pretty unusual space:
+	```BASH
+	Creating /home/<username>/.local/bin/jhbuild
+	Creating /home/<username>/.local/share/applications/jhbuild.desktop
+	```
+	_Precedent output_
