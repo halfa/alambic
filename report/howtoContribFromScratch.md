@@ -29,12 +29,22 @@ You can copy/paste in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'
 
 The start
 ---------
-1. The basics
-	1. Install git
-			sudo yum install git
-	2. Clone Latexila's repository
-			git clone git://git.gnome.org/latexila 
 
-2. Install Jhb
+### (1) The basics
+1. Install git
+		sudo yum install git
+2. Clone Latexila's repository
+		git clone git://git.gnome.org/latexila 
 
+### (2) Install Jhbuild
+Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 
+1. Creat a jhbuid directory where you want
+		mkdir ~/jhbuild
+		cd ~/jhbuild
+2. Make a shadow cole of the repo
+		git clone --depth=1 git://git.gnome.org/jhbuild
+3. Install it
+		./autogen.sh --simple-install
+ 		make
+ 		make install
