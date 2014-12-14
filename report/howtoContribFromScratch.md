@@ -42,27 +42,28 @@ The start
 Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 
 1. Creat a jhbuid directory where you want
-	```BASH
+```BASH
 	mkdir ~/jhbuild
 	cd ~/jhbuild
-	```
+```
 2. Make a shadow cole of the repo
-	```BASH
-	git clone --depth=1 git://git.gnome.org/jhbuild ```
+```BASH
+	git clone --depth=1 git://git.gnome.org/jhbuild
+```
 3. Install it _no root needed_
-	```BASH
+```BASH
 	./autogen.sh --simple-install
  	make
  	make install
-	```
+```
 4. Now if you try to run, you will have something like this:
-	```BASH
+```BASH
 	$ jhbuild
 	bash: jhbuild: unkown command
-	```
+```
 	That's because ```make install``` put jhbuild in a pretty unusual space:
-	```BASH
+```BASH
 	Creating /home/<username>/.local/bin/jhbuild
 	Creating /home/<username>/.local/share/applications/jhbuild.desktop
-	```
+```
 	_Precedent output_
