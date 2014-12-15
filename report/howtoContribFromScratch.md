@@ -3,6 +3,12 @@ How to contribute to Latexila ?
 
 This document is designed for the begginers who want to start to contribute to a Gnome software. Latexila will be taken as an example, but this document can help for many other software from the **Gnome Project**.
 
+Why this document ?
+-------------------
+
+We are a small team (3 people) at INSA Rennes, a french engineering school, who appened to work on Latexila.
+We were not satisfied with the current documentation provided by the Gnome project, which is well documented but provide no real gothrought.
+
 Goal
 ----
 The goal of this document is to provide a walkthrought as complete as possible of the setup of a Latexila devlopper environement.
@@ -22,7 +28,7 @@ Prerequired
 -----------
 
 ### Computer
-We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk remaining (more than 3Gb).
+We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk remaining (more than 10GB).
 We assume you have administrator's priviledges.
 
 ### Human
@@ -35,7 +41,7 @@ The basics
 
 1. Install needed packets (hand picked)
 	```BASH
-	sudo yum install git gcc g++ gnome-common gtk3-devel vala gcc-c++ xorg-x11-util-macros mesa-libwayland-egl
+	sudo yum install git gcc g++ gnome-common gtk3-devel vala gcc-c++ xorg-x11-util-macros mesa-libwayland-egl gtkspell3-devel intltool gtksourceview-devel gobject-introspection-devel lcov
 	```
 	Or even if you don't care... #brutforce
 	```BASH
@@ -103,7 +109,13 @@ Build Latexila
 ```
 > Jhbuild will ask for root access during the process
 
-2. Building the software
+2. Building vala
+```BASH
+	jhbuild update vala
+	jhbuild build vala
+```
+
+3. Building the software
 ```BASH
 	jhbuild build latexila
 ```
@@ -119,4 +131,3 @@ Juste type:
 ```
 
 > You can have a _distribution_ version of latexila by running the usual ```sudo yum install latexila```
-
