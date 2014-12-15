@@ -31,6 +31,8 @@ Prerequired
 We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk remaining (more than 10GB).
 We assume you have administrator's priviledges.
 
+> The testing was done on a fresh VM under Fedora-21-5-i686 (32bit)
+
 ### Human
 We assume that you are not affraid of the command line.
 You can copy/paste in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'+'V'.
@@ -64,7 +66,7 @@ Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 	cd ~/jhbuild
 ```
 
-2. Make a shadow cole of the repo
+2. Make a shadow clone of the repo
 ```BASH
 	git clone --depth=1 git://git.gnome.org/jhbuild
 ```
