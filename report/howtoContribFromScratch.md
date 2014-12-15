@@ -29,13 +29,17 @@ We assume you have administrator's priviledges.
 We assume that you are not affraid of the command line.
 You can copy/paste in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'+'V'.
 
-The start
----------
 
-### The basics
-1. Install some useful packets
+The basics
+----------
+
+1. Install needed packets (hand picked)
 	```BASH
-	sudo yum install git gcc g++ gnome-common gtk3-devel vala gcc-c++
+	sudo yum install git gcc g++ gnome-common gtk3-devel vala gcc-c++ xorg-x11-util-macros mesa-libwayland-egl
+	```
+	Or even if you don't care... #brutforce
+	```BASH
+	sudo yum groupinstall development-libs development-tools gnome-software-development 
 	```
 
 2. Clone Latexila's repository (not required)
@@ -43,7 +47,9 @@ The start
 	git clone git://git.gnome.org/latexila
 	```
 
-### Install Jhbuild
+Install Jhbuild
+---------------
+
 Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 
 1. Creat a jhbuid directory where you want
@@ -66,7 +72,8 @@ Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 
 Now you can call jhbuil from the command line !
 
-### Install latexila using jhbuild
+Install latexila using jhbuild
+------------------------------
 
 1. Get a config file sample at [swilmet's page](https://people.gnome.org/~swilmet/jhbuildrc-latexila).
 2. Put it in ```/home/<user>/.config/jhbuildrc```
@@ -87,7 +94,8 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 > If you have an error, just use the choice you are given.
 > At _hicolor-icon-theme_ for example, use choice ```1. Retry checkout```
 
-### Build Latexila
+Build Latexila
+--------------
 
 1. Install system dependencies
 ```BASH
@@ -102,4 +110,13 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 > The first build can take up to an hour or even two, depending on your workstation.
 > Take a coffe and enjoy the run !
 
-3.
+Run Latexila
+------------
+
+Juste type:
+```BASH 
+	jhbuild run latexila
+```
+
+> You can have a _distribution_ version of latexila by running the usual ```sudo yum install latexila```
+
