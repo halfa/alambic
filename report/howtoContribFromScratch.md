@@ -1,13 +1,13 @@
 How to contribute to Latexila ?
 ===============================
 
-This document is designed for the begginers who want to start to contribute to a Gnome software. Latexila will be taken as an example, but this document can help for many other software from the **Gnome Project**.
+This document is designed for the beginners who want to start to contribute to a Gnome software. Latexila will be taken as an example, but this document can help for many other software from the **Gnome Project**.
 
 Why this document ?
 -------------------
 
-We are a small team (3 people) at INSA Rennes, a french engineering school, who appened to work on Latexila.
-We were not satisfied with the current documentation provided by the Gnome project, which is well documented but provide no real gothrought.
+We are a small team (3 people) at INSA Rennes, a french engineering school, who happened to work on Latexila.
+We were not satisfied with the current documentation provided by the Gnome project, which is well documented but provides no real gothrought.
 
 Goal
 ----
