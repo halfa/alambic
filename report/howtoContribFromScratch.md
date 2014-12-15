@@ -9,6 +9,8 @@ The goal of this document is to provide a walkthrought as complete as possible o
 
 We choose Fedora as a starting point because it's the Linux distribution providing the broader support for the Gnome environement.
 
+> The setup (download + first build) take something like 2h, but it's largely waiting time.
+
 Resources
 ----------
 
@@ -31,9 +33,9 @@ The start
 ---------
 
 ### The basics
-1. Install some useful packets for 
+1. Install some useful packets
 	```BASH
-	sudo yum install git gcc
+	sudo yum install git gcc g++ gnome-common gtk3-devel vala gcc-c++
 	```
 
 2. Clone Latexila's repository (not required)
@@ -68,7 +70,9 @@ Now you can call jhbuil from the command line !
 
 1. Get a config file sample at [swilmet's page](https://people.gnome.org/~swilmet/jhbuildrc-latexila).
 2. Put it in ```/home/<user>/.config/jhbuildrc```
-3. Either change the prefix '/opt/gnome' or make sure of the '/opt' access right
+3. Either change the prefix ```/opt/gnome``` or make sure of the ```/opt``` access right.
+
+> If you don't edit your config, the repositories will be put at ```/home/<user>/<repo>```
 
 4. Get all the dependencies from the git repositories.
 This can take a very~ long~ time~ if you have a laptop and a not-so-good internet conection.
@@ -92,4 +96,10 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 > Jhbuild will ask for root access during the process
 
 2. Building the software
+```BASH
+	jhbuild build latexila
+```
+> The first build can take up to an hour or even two, depending on your workstation.
+> Take a coffe and enjoy the run !
 
+3.
