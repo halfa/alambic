@@ -83,7 +83,7 @@ Now you can call jhbuil from the command line !
 Install latexila using jhbuild
 ------------------------------
 
-1. Get a config file sample at [swilmet's page](https://people.gnome.org/~swilmet/jhbuildrc-latexila).
+1. Get a config file sample at [swilmet's page](https://people.gnome.org/~swilmet/latexila/jhbuildrc).
 2. Put it in ```/home/<user>/.config/jhbuildrc```
 3. Either change the prefix ```/opt/gnome``` or make sure of the ```/opt``` access right.
 
