@@ -1,7 +1,7 @@
-How to contribute to Latexila ?
-===============================
+How to contribute to Latexila
+==========================
 
-This document is designed for the beginners who want to start to contribute to a Gnome software. Latexila will be taken as an example, but this document can help for many other software from the **Gnome Project**.
+This document is designed for the beginners who want to start to contribute to a Gnome software. Latexila will be taken as an example, but this document can help for many other software from the **Gnome Project**, especially thoses who use `jhbuild`.
 
 Why this document ?
 -------------------
@@ -20,22 +20,22 @@ We choose Fedora as a starting point because it's the Linux distribution providi
 Resources
 ----------
 
-[The Gnome project website for devloppers](https://developer.gnome.org/)
-[Latexila's page](https://wiki.gnome.org/Apps/LaTeXila)
-[Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild)
+* [The Gnome project website for devloppers](https://developer.gnome.org/)
+* [Latexila's page at GNOME.org](https://wiki.gnome.org/Apps/LaTeXila)
+* [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild)
 
 Prerequired
 -----------
 
 ### Computer
-We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk remaining (more than 10GB).
-We assume you have administrator's priviledges.
+We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk space remaining (more than 10GB). We assume too you have administrator's priviledges.
 
-> The testing was done on a fresh VM under Fedora-21-5-i686 (32bit)
+> The testing was done on a fresh install of Fedora 21 Workstation (64bit) up-to-date as of 18 march 2015
+> LaTeXiLa's version is latest 
 
 ### Human
 We assume that you are not affraid of the command line.
-You can copy/paste in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'+'V'.
+You can copy/paste commands in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'+'V'.
 
 
 The basics
@@ -99,7 +99,7 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 	jhbuild update latexila
 ```
 
-> If you have an error, just use the choice you are given.
+> If you have an error, just try the choices you are given, on by one.
 > At _hicolor-icon-theme_ for example, use choice ```1. Retry checkout```
 
 Build Latexila
@@ -117,12 +117,25 @@ Build Latexila
 	jhbuild build vala
 ```
 
-3. Building the software
+3. Building the software and all his dependencies
 ```BASH
 	jhbuild build latexila
 ```
-> The first build can take up to an hour or even two, depending on your workstation.
+> The first build can take up to an hour or even two, depending on how powerfull you workstation is.
 > Take a coffe and enjoy the run !
+
+4. Building only latexila
+If you want to build only latexila, you can do so by using
+```BASH
+	jhbuild buildone latexila
+```
+This will build the current `master` version.
+
+5. Custom build for testing
+```BASH
+	# into [...]/latexila
+	jhbuild make
+```
 
 Run Latexila
 ------------
