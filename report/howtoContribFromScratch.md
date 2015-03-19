@@ -92,7 +92,7 @@ Build Latexila
 
 1. Install (or check) system dependencies
 ```BASH
-	jhbuild sysdep --install
+	jhbuild sysdeps --install
 ```
 > Jhbuild will ask for root access during the process
 
