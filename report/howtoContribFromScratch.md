@@ -82,12 +82,10 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 > Average time is half an hour on a desktop computer with fiber internet access
 
 ```BASH
-	jhbuild update jhbuild
 	jhbuild update latexila
 ```
 
-> If you have an error, just try the choices you are given, on by one.
-> At _hicolor-icon-theme_ for example, use choice ```1. Retry checkout```
+> If you have an error, just try the choices you are given, on by one and if needed hunt the needed packages using `yum search`.
 
 Build Latexila
 --------------
