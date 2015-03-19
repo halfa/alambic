@@ -43,16 +43,11 @@ The basics
 
 1. Install needed packets (hand picked)
 	```BASH
-	sudo yum install git gcc g++ gnome-common gtk3-devel vala gcc-c++ xorg-x11-util-macros mesa-libwayland-egl gtkspell3-devel intltool gtksourceview-devel gobject-introspection-devel lcov
+	sudo yum install git gcc gnome-common gtk3-devel vala gcc-c++ xorg-x11-util-macros mesa-libwayland-egl gtkspell3-devel intltool gtksourceview-devel gobject-introspection-devel lcov
 	```
 	Or even if you don't care... #brutforce
 	```BASH
 	sudo yum groupinstall development-libs development-tools gnome-software-development 
-	```
-
-2. Clone Latexila's repository (not required)
-	```BASH
-	git clone git://git.gnome.org/latexila
 	```
 
 Install Jhbuild
@@ -60,39 +55,31 @@ Install Jhbuild
 
 Inspired from [Jhbuild HOWTO](https://wiki.gnome.org/HowDoI/Jhbuild).
 
-1. Creat a jhbuid directory where you want
-```BASH
-	mkdir ~/jhbuild
-	cd ~/jhbuild
-```
-
-2. Make a shadow clone of the repo
+1. Make a shadow clone of the repo
 ```BASH
 	git clone --depth=1 git://git.gnome.org/jhbuild
 ```
-
-3. Install it _no root needed_
+2. Install it _no root needed_
 ```BASH
 	./autogen.sh --simple-install
  	make
  	make install
 ```
 
-Now you can call jhbuil from the command line !
+Now you can call `jhbuild` from the command line ! 
 
 Install latexila using jhbuild
 ------------------------------
 
 1. Get a config file sample at [swilmet's page](https://people.gnome.org/~swilmet/latexila/jhbuildrc).
 2. Put it in ```/home/<user>/.config/jhbuildrc```
-3. Either change the prefix ```/opt/gnome``` or make sure of the ```/opt``` access right.
-
-> If you don't edit your config, the repositories will be put at ```/home/<user>/<repo>```
+3. Either change the place prefix to something different or make sure of access rights for the current user.
+> If you don't edit your config, the repositories will be put at ```/home/<user>/<repo>``` and files will be compiled to ```/opt```
 
 4. Get all the dependencies from the git repositories.
-This can take a very~ long~ time~ if you have a laptop and a not-so-good internet conection.
+This can take a very~ long~ time~ if you have a laptop and a not-so-good internet conection, because some of the repositories are big, like `Glib` or `GTK3`.
 
-> Average time is half an hour on a desktop with fiber
+> Average time is half an hour on a desktop computer with fiber internet access
 
 ```BASH
 	jhbuild update jhbuild
@@ -105,7 +92,7 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 Build Latexila
 --------------
 
-1. Install system dependencies
+1. Install (or check) system dependencies
 ```BASH
 	jhbuild sysdep --install
 ```
@@ -122,7 +109,7 @@ Build Latexila
 	jhbuild build latexila
 ```
 > The first build can take up to an hour or even two, depending on how powerfull you workstation is.
-> Take a coffe and enjoy the run !
+> Take a coffe !
 
 4. Building only latexila
 If you want to build only latexila, you can do so by using
@@ -140,7 +127,7 @@ This will build the current `master` version.
 Run Latexila
 ------------
 
-Juste type:
+Juste type
 ```BASH 
 	jhbuild run latexila
 ```
