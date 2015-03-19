@@ -28,13 +28,13 @@ Prerequired
 -----------
 
 ### Computer
-We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk space remaining (more than 10GB). We assume too you have administrator's priviledges.
+We assume that you have at you disposal a fresh or not-so-broken install of Fedora (21 preferred), and a resonable disk space remaining (more than 10GB). We assume that you have administrator's privileges too.
 
 > The testing was done on a fresh install of Fedora 21 Workstation (64bit) up-to-date as of 18 march 2015
 > LaTeXiLa's version is latest 
 
 ### Human
-We assume that you are not affraid of the command line.
+We assume that you are not afraid of the command line.
 You can copy/paste commands in most terminals using 'Ctrl'+'Shift'+'C' and 'Ctrl'+'Shift'+'V'.
 
 
@@ -45,7 +45,7 @@ The basics
 	```BASH
 	sudo yum install git gcc gnome-common gtk3-devel vala gcc-c++ xorg-x11-util-macros mesa-libwayland-egl gtkspell3-devel intltool gtksourceview-devel gobject-introspection-devel lcov
 	```
-	Or even if you don't care... #brutforce
+	Or even if you don't care... #bruteforce
 	```BASH
 	sudo yum groupinstall development-libs development-tools gnome-software-development 
 	```
@@ -85,7 +85,7 @@ This can take a very~ long~ time~ if you have a laptop and a not-so-good interne
 	jhbuild update latexila
 ```
 
-> If you have an error, just try the choices you are given, on by one and if needed hunt the needed packages using `yum search`.
+> If you have an error, just try the choices you are given, one by one and, if needed, hunt the needed packages using `yum search`.
 
 Build Latexila
 --------------
