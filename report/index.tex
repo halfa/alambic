@@ -2,8 +2,9 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
+%\usepackage{exptech}
 
-\title{Étude pratique}
+\title{Étude pratique : Amélioration de la complétion automatique de LaTeXila}
 \author{Axel Caro\and François Bochet\and Maximilien Richer}
 \date{2014-2015}
 
@@ -12,12 +13,41 @@
 \maketitle %affichage du titre
 \tableofcontents %table des matières
 
-\chapter{Introduction}
+\section{Remerciments} % (fold)
+\label{cha:remerciments}
+Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de LaTeXila.
+
+\section{Introduction}
+\label{cha:Introduction}
+Cette étude pratique a été pour nous l'occasion de découvrir le fonctionement des projets open-source.
 
 \section{Latexila}
-\label{latexila}
-  Latexila est un projet d'éditeur LaTeX pour le projet GNOME
+\label{sec:latexila}
+
+Latexila est un projet d'éditeur LaTeX pour le projet GNOME
+
 \section{Compiler le projet}
-  \subsection{Jhbuild}
-  \label{jhbuild}
+\label{sec:compiler}
+La compilation d'un projet GNOME est un processus complexe pour un non-initié. En effets, elle demande certaines conaissances dans le fonctionement des gestionaires de paquet ansi que des modes de focntionement des distributions Linux modernes.
+
+\subsection{Jhbuild}
+\label{sub:jhbuild}
+
+\section{Etude pratique} % (fold)
+\label{cha:etude_pratique}
+
+\subsection{Gestion du projet} % (fold)
+\label{sub:git}
+Git est le CVS utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome, mais un mirroir est diponible sur Github %adresse 
+Pour ce pojet, l'équipe a crée un \textit{fork} du dépot principale sur Github et a travaillé sur une branche annexe, régulièrement mise à jour à partir du dépot officiel.
+Les soumissions sont faites via le bugzilla du projet Gnome, qui permet au mainteneur de commenter le code soumis.
+% subsection git (end)
+
+\section{Tâche à réaliser} % (fold)
+\label{sec:tache_a_realiser}
+
+\section{Réalisation}
+
+% section tâche_à_réaliser (end)
+
 \end{document}
