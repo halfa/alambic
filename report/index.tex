@@ -3,6 +3,27 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{exptech}
+\usepackage{listings}
+
+% listings for Vala
+% Vala definitions
+%
+% \lst definelanguage{Vala}[Sharp]{C}%
+%   {morekeywords={CCode,DBus,Test,cname,cheader_filename,type_id,%
+%       marshaller_type_name,get_value_function,set_value_function,%
+%       default_value,IntegerType,rank,type_signature,size_t,int8,int16,%
+%       int32,uint32,uint16,uint8,int64,uint64,float,double,time_t,%
+%       SimpleType,unichar,cprefix,has_type_id,get,set,ref_function,%
+%       unref_function,free_function,has_target,Compact,delegate,%
+%       destroy_function,PrintFormat,Diagnostics,FILE,LINE,METHOD,%
+%       errordomain,array_length_type,has_array_length,is_null_terminated,%
+%       ReturnsModifiedPointer,dup_function,weak,owned,unowned,value,var,%
+%       connect,async},%
+%     morecomment=[s]{"""}{"""}
+%     }[keywords,strings]
+% from https://mail.gnome.org/archives/vala-list/2009-October/msg00139.html
+
+%% ** Begin document ** %%
 
 \title{Étude pratique : Amélioration de la complétion automatique de LaTeXila}
 \author{Axel Caro\and François Bochet\and Maximilien Richer}
@@ -11,7 +32,7 @@
 \begin{document}
 
 \maketitle %affichage du titre
-% \tableofcontents %table des matières
+\tableofcontents %table des matières
 
 \section{Remerciments} % (fold)
 \label{cha:remerciments}
@@ -19,33 +40,46 @@ Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses co
 
 \section{Introduction}
 \label{cha:Introduction}
-Cette étude pratique a été pour nous l'occasion de découvrir le fonctionement des projets open-source.
+Les \textit{études pratiques} sont des projets réalisé chaque année pas les élèves du département Informatique de l'INSA de Rennes. Ils s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de dévelloper leur sens du travail et équipe et leur autonomie. Les sujets sont aussi divers que varié, allant de prtotypes pour une application au site web, en passant par les réalisatiions d'IA ou de site web.
 
-\section{Latexila}
+Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est ouvert, c'est à dire qu'il est mis à disposition du public pour modification.
+
+\section{Latexila, un éditeur latex}
 \label{sec:latexila}
+Latexila est un projet d'éditeur LaTeX pour le projet Gnome dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet. Bien que commencé en C, le projet a été porté vers le language Vala en 2010. 
+%see more @https://wiki.gnome.org/Apps/LaTeXila/History
 
-Latexila est un projet d'éditeur LaTeX pour le projet GNOME
+\subsubsection{À propos de latex}
+% write something here ?
+
+\subsubsection{Vala}
+Vala est un laguage développé pour le projet Gnome. Il vise à être une alternative au C\# et au Java en proposant une syntaxe puissante pour faire de la programation orienté objet. Il se base sur la librairie GObject et est compilé en C via la commande `valac`.
+
+\subsection{La complétion dans LaTeXiLa}
+\label{sub:completion}
+La version 2.2 de LaTeXiLa fournie une complétion compète des éléments statiques du language.
+
+% more @ https://wiki.gnome.org/Projects/Vala/About
 
 \chapter{Compiler le projet}
 \label{cha:compiler}
-La compilation d'un projet GNOME est un processus complexe pour un non-initié. En effets, elle demande certaines conaissances dans le fonctionement des gestionaires de paquet ansi que des modes de focntionement des distributions Linux modernes.
+La compilation d'un projet GNOME est un processus complexe pour un non-initié. En effets, elle demande certaines conaissances dans le fonctionement des gestionaires de paquet ansi que des modes de fonctionement des distributions Linux modernes.
 
 \subsection{Jhbuild}
 \label{sub:jhbuild}
-
 \section{Etude pratique} % (fold)
 \label{cha:etude_pratique}
 
 \subsection{Gestion du projet} % (fold)
 \label{sub:git}
 Git est le CVS utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome, mais un mirroir est diponible sur Github %adresse 
-Pour ce pojet, l'équipe a crée un \textit{fork} du dépot principale sur Github et a travaillé sur une branche annexe, régulièrement mise à jour à partir du dépot officiel.
+Pour ce pojet, nous avons crée un \textit{fork} du dépot principale sur Github et a travaillé sur une branche annexe, régulièrement mise à jour à partir du dépot officiel.
 Les soumissions sont faites via le bugzilla du projet Gnome, qui permet au mainteneur de commenter le code soumis. Il s'ensuit ensuite un va et vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale.
 % subsection git (end)
 
 \section{Tâche à réaliser} % (fold)
 \label{sec:tache_a_realiser}
-La tâche à réaliser est l'amélioration de la complétion des références. La difficultée est de construire une complétion dynamiques
+La tâche à réaliser est l'amélioration de la complétion des commande de références. Commme mentionné précedemment\ref{sub:completion}, il existe un système déjà en place.
 
 % section tâche_à_réaliser (end)
 
@@ -68,5 +102,7 @@ L'étape suivante a été l'intégration de
 
 \subsection{Intégration des fichiers non-ouverts}
 
+\chapter{conclusion}
+Cette étude pratique a été pour nous l'occasion de découvrir le fonctionement des projets open-source.
 
 \end{document}
