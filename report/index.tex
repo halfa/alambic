@@ -35,40 +35,40 @@
 \maketitle %affichage du titre
 \tableofcontents %table des matières
 
-\section{Remerciments} % (fold)
-\label{sec:remerciments}
+\section{Remerciements} % (fold)
+\label{sec:remerciements}
 Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de LaTeXila.
 
 \chapter{Introduction}
 \label{cha:Introduction}
-Les \textit{études pratiques} sont des projets réalisé chaque année pas les élèves du département Informatique de l'INSA de Rennes. Ils s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de dévelloper leur sens du travail et équipe et leur autonomie. Les sujets sont aussi divers que varié, allant de prtotypes pour une application au site web, en passant par les réalisatiions d'IA ou de site web.
+Les \textit{études pratiques} sont des projets réalisé chaque année pas les élèves du département Informatique de l'INSA de Rennes. Ils s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de dévelloper leur sens du travail et équipe et leur autonomie. Les sujets sont aussi divers que variés, allant de prtotypes pour une application au site web, en passant par les réalisatiions d'IA.
 
-Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est ouvert, c'est à dire qu'il est mis à disposition du public pour modification.
+Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est ouvert, c'est à dire qu'il est mis à disposition du public pour modification (logiciel dit "open-source").
 
 \section{Latexila}
 \label{sec:latexila}
-Latexila est un projet d'éditeur LaTeX pour le projet Gnome dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet. Bien que commencé en C, le projet a été porté vers le language Vala en 2010. LaTeXiLa adopte une approche centré sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker par exemple. De par cette philosophie, il ne possède pas de module WISWIG.
+Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet. Bien que commencé en C, le projet a été porté vers le language Vala en 2010. LaTeXiLa adopte une approche centré sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker par exemple. De par cette philosophie, il ne possède pas de module WISWIG.
 % need ref for WISWIG
 %see more @https://wiki.gnome.org/Apps/LaTeXila/History
 
 \subsubsection{À propos de \LaTeX{}}
-LaTeX est un language utilisé pour la composition de documents. Il permet notament de mettre en place des feuilles de style normalisé ou encore de cosntruire des expressions mathématiques.
+LaTeX est un language utilisé pour la composition de documents. Il permet notamment de mettre en place des feuilles de style normalisées ou encore de construire des expressions mathématiques.
 % write something here ?
 
 \subsubsection{Le language Vala}
 \label{sss:vala}
-Vala est un laguage développé pour le projet Gnome. Il vise à être une alternative au C\# et au Java en proposant une syntaxe puissante pour faire de la programation orienté objet. Il se base sur la librairie GObject et est compilé en C via la commande `valac`.
+Vala est un laguage développé pour le projet Gnome. Il vise à être une alternative au C\# et au Java en proposant une syntaxe puissante pour faire de la programation orientée objet. Il se base sur la librairie GObject et est compilé en C via la commande `valac`.
 
 \section{Compiler LaTeXila}
 \label{cha:compiler}
-La compilation d'un projet GNOME est un processus complexe pour un non-initié. L'obtention de paquets en pré-série souvent non stable est déconseillé pour les non-développeur du faite de leur stabilité toute relative.
+La compilation d'un projet GNOME est un processus complexe pour un non-initié. L'obtention de paquets en pré-série souvent non stables est déconseillée pour les non-développeurs du fait de leur stabilité toute relative.
 
 \subsection{Jhbuild}
 \label{sub:jhbuild}
 \begin{quote}
   JHBuild allows you to build and run Gnome platform and applications building the required modules in a sandbox environment, isolating the installation; so there is no need to build and run Gnome inside a virtual machine. \textit{wiki.gnome.org}
 \end{quote}
-Comme indiqué ci-dessus, il s'agit d'un outils conçu pour permettre au développeur de construire les librairies d'un projet dans un environement bac-à-sable de manière à éviter une instabilitée de la machine de développement causé par l'utilisation de librairies en pré-version. Il fournie certaines commandes très utiles comme "jhbuild update" "jhbuild build" "jhbuild make".
+Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version. Il fournit certaines commandes très utiles, telles que "jhbuild update" "jhbuild build" "jhbuild make".
 % à développer
 
 \chapter{Étude pratique} % (fold)
@@ -77,9 +77,9 @@ Le but de cette étude pratique est d'ajouter à la complétion le support de la
 
 \section{Gestion du projet} % (fold)
 \label{sec:git}
-Git est le CVS utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome, mais un mirroir est diponible sur Github %adresse 
-Pour ce pojet, nous avons crée un \textit{fork} du dépot principale sur Github et a travaillé sur une branche annexe, régulièrement mise à jour à partir du dépot officiel.
-Les soumissions sont faites via le bugzilla du projet Gnome, qui permet au mainteneur de commenter le code soumis. Il s'ensuit ensuite un va et vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale.
+Git est le CVS utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome, mais un miroir est diponible sur Github %adresse 
+Pour ce pojet, nous avons créé un \textit{fork} du dépot principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépot officiel.
+Les soumissions sont faites via le bugzilla du projet Gnome, ce qui permet au mainteneur de commenter le code soumis. Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale.
 % subsection git (end)
 
 \section{Tâche à réaliser} % (fold)
@@ -89,7 +89,7 @@ La tâche à réaliser est l'amélioration de la complétion des commande de ré
 
 \subsection{La complétion dans LaTeXila 2.2}
 \label{sub:completion}
-La version 2.2 de LaTeXiLa fournie une complétion compète des éléments statiques du language LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme. 
+La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du language LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme. 
 % more @ https://wiki.gnome.org/Projects/Vala/About
 
 
@@ -97,7 +97,7 @@ La version 2.2 de LaTeXiLa fournie une complétion compète des éléments stati
 
 \chapter{Réalisation}
 La réalisation s'est faite par petits pas. Sur une base de deux semaines de travail, l'équipe se donnait un objectif à atteindre pour le point suivant avec l'encadrant.
-Ces points bi-hebdomadaires permettaient de discuter des directions à prendre pour le développement.
+Ces points bi-mensuels permettaient de discuter des directions à prendre pour le développement.
 
 \subsection{Intégration d'une recherche au document courant}
 Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la struture des documents.
