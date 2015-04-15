@@ -68,7 +68,21 @@ La compilation d'un projet GNOME est un processus complexe pour un non-initié. 
 \begin{quote}
   JHBuild allows you to build and run Gnome platform and applications building the required modules in a sandbox environment, isolating the installation; so there is no need to build and run Gnome inside a virtual machine. \textit{wiki.gnome.org}
 \end{quote}
-Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version. Il fournit certaines commandes très utiles, telles que "jhbuild update" "jhbuild build" "jhbuild make".
+Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version. Il fournit certaines commandes très utiles, telles que :
+\begin{description}
+  \item[jhbuild update <package>] Met à jour le paquet et toute ses dépendances
+  \item[jhbuild build <package>] Met à jour et compile le paquet et toute ses dépendances
+  \item[jhbuild buildone <package>] Ne compile que le paquet ciblé
+  \item[jhbuild make <target>] Execute le Makefile à l'emplacement courant
+\end{description}
+
+Ainsi, un \textit{jhbuild build latexila} réalise, pour chaque dépendances de latexila :
+\begin{description} 
+  \item[Mise à jour] Un \textit{checkout} sur la branche master du dépôt, suivi d'un \textit{fetch} puis d'un \textit{rebase} 
+  \item[Compilation] Execution du \textit{make all}
+\end{description}
+
+Dans le cas de la compilation d'une version de test, on utilisera \textit{jhbuild make}, qui nous permettra de compiler sur la branche courante.
 % à développer
 
 \chapter{Étude pratique} % (fold)
