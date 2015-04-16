@@ -56,26 +56,31 @@ LaTeX est un langage utilisé pour la composition de documents. Il permet notamm
 % write something here ?
 
 \subsection{Le langage Vala}
-\label{sss:vala}
+\label{sub:vala}
 Vala est un langage développé pour le projet Gnome. Il vise à être une alternative au C\# et au Java en proposant une syntaxe puissante pour la programation orientée objet.
 Il se base sur la librairie GObject et est compilé en C via la commande `valac`.
-
+% more @ https://wiki.gnome.org/Projects/Vala/About
 \begin{lstlisting} % TODO encadrer
+
 void main () {
     print ("hello, world\n");
 }
-\end{lstlisting}\textit{https://wiki.gnome.org/Projects/Vala/BasicSample}
+
+\end{lstlisting}\textit{Exemple tiré de wiki.gnome.org/Projects/Vala/BasicSample}
 
 \section{Compiler LaTeXila}
 \label{cha:compiler}
-La compilation d'un projet GNOME est un processus complexe pour un non-initié. L'obtention de paquets en pré-série souvent non stables est déconseillée pour les non-développeurs du fait de leur stabilité toute relative. On utilise donc des outils spécifiques de manière à séparer l'environnement de travail et 
+La compilation d'un projet GNOME est un processus complexe pour un non-initié. L'obtention de paquets en pré-série souvent non stables est déconseillée pour les non-développeurs du fait de leur stabilité toute relative. On utilise donc des outils spécifiques de manière à séparer environnement utilisateur et environnement de test. 
 
 \subsection{Jhbuild}
 \label{sub:jhbuild}
+
 \begin{quote}
   JHBuild allows you to build and run Gnome platform and applications building the required modules in a sandbox environment, isolating the installation; so there is no need to build and run Gnome inside a virtual machine. \textit{wiki.gnome.org}
 \end{quote}
+
 Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environnement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version. Il fournit certaines commandes très utiles, telles que :
+
 \begin{description}
   \item[jhbuild update <package>] Met à jour le paquet et toute ses dépendances
   \item[jhbuild build <package>] Met à jour et compile le paquet et toute ses dépendances
@@ -84,6 +89,7 @@ Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au dévelop
 \end{description}
 
 Ainsi, un \textit{jhbuild build latexila} réalise, pour chaque dépendances de latexila :
+
 \begin{description} 
   \item[Mise à jour] Un \textit{checkout} sur la branche master du dépôt, suivi d'un \textit{fetch} puis d'un \textit{rebase} 
   \item[Compilation] Exécution du \textit{make all}
@@ -96,32 +102,33 @@ Dans le cas de la compilation d'une version de test, on utilisera \textit{jhbuil
 \label{cha:etude_pratique}
 Le but de cette étude pratique est d'ajouter à la complétion le support de la commande \textbf{\\ref} qui proposerait comme complétion une liste des clef des \\label. 
 
-\section{Gestion du projet} % (fold)
+\section{Tâche à réaliser} % (fold)
+\label{sec:tache_a_realiser}
+La tâche à réaliser est l'amélioration de la complétion des commande de références. Il existe un système déjà en place, celui-ci doit donc être amélioré.
+
+\subsection{La complétion dans LaTeXila 2.2}
+\label{sub:completion}
+La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme.
+Cette complétion est donc dite \textit{statique}, car 
+
+\subsection{Une complétion dynamique}
+\label{sub:completion_dyn}
+
+% section tâche_à_réaliser (end)
+
+\section{Gestion de projet} % (fold)
 \label{sec:git}
 Git est le CVS utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome, mais un miroir est disponible sur Github %adresse 
 Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt officiel.
 Les soumissions sont faites via le bugzilla du projet Gnome, ce qui permet au mainteneur de commenter le code soumis. Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale.
 % subsection git (end)
 
-\section{Tâche à réaliser} % (fold)
-\label{sec:tache_a_realiser}
-La tâche à réaliser est l'amélioration de la complétion des commande de références. Comme mentionné précédemment\ref{sub:completion}, il existe un système déjà en place.
-
-
-\subsection{La complétion dans LaTeXila 2.2}
-\label{sub:completion}
-La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme. 
-% more @ https://wiki.gnome.org/Projects/Vala/About
-
-
-% section tâche_à_réaliser (end)
-
 \chapter{Réalisation}
 La réalisation s'est faite par petits pas. Sur une base de deux semaines de travail, l'équipe se donnait un objectif à atteindre pour le point suivant avec l'encadrant.
 Ces points bi-mensuels permettaient de discuter des directions à prendre pour le développement.
 
 \section{Intégration d'une recherche au document courant}
-Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la struture des documents.
+Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
 
 <schéma: diagramme de séquence ?>
 
