@@ -5,6 +5,7 @@
 \usepackage{titlesec}
 \usepackage{exptech}
 \usepackage{listings}
+\usepackage{hyperref}
 
 % listings for Vala
 % Vala definitions
@@ -43,12 +44,14 @@ Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses co
 \label{cha:Introduction}
 Les \textit{études pratiques} sont des projets réalisé chaque année pas les élèves du département Informatique de l'INSA de Rennes. Ils s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de développer leur sens du travail et équipe et leur autonomie. Les sujets sont aussi divers que variés, allant de prototypes applicatifs au site web, en passant par les réalisations d'IA.
 
-Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est ouvert, c'est à dire qu'il est mis à disposition du public pour modification (logiciel dit "open-source").
+Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est ouvert\footnote{Logiciel dit "open-source"}, c'est à dire qu'il est mis à disposition du public pour modification.
 
 \section{Latexila}
 \label{sec:latexila}
-Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet. Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. LaTeXiLa adopte une approche centré sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker par exemple. De par cette philosophie, il ne possède pas de module WYSIWYG.
-% need ref for WISWIG
+Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet. Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. LaTeXiLa adopte une approche centré sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}} par exemple. De par cette philosophie, il ne possède pas de module WYSIWYG\footnote{What You See Is What You Get - Un mode d'édition ou l'utilisateur édite directement une vue correspondant au rendu final}.
+
+\include{draw/UI.tex}
+
 %see more @https://wiki.gnome.org/Apps/LaTeXila/History
 
 \subsection{À propos de \LaTeX{}}
@@ -76,7 +79,7 @@ La compilation d'un projet GNOME est un processus complexe pour un non-initié. 
 \label{sub:jhbuild}
 
 \begin{quote}
-  JHBuild allows you to build and run Gnome platform and applications building the required modules in a sandbox environment, isolating the installation; so there is no need to build and run Gnome inside a virtual machine. \textit{wiki.gnome.org}
+JHBuild allows you to build and run Gnome platform and applications building the required modules in a sandbox environment, isolating the installation; so there is no need to build and run Gnome inside a virtual machine. \textit{\url{wiki.gnome.org}}
 \end{quote}
 
 Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environnement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version. Il fournit certaines commandes très utiles, telles que :
@@ -108,8 +111,13 @@ La tâche à réaliser est l'amélioration de la complétion des commande de ré
 
 \subsection{La complétion dans LaTeXila 2.2}
 \label{sub:completion}
-La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme.
-Cette complétion est donc dite \textit{statique}, car 
+La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage \LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme.
+Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au contenu précédemment tapé par l'utilisateur\ref{cha:compiler}. 
+
+\begin{description}
+  \item[Fonction] de la forme \\\textit{fonction}\{argument\}, défini par \LaTeX
+  \item[Argument] peut être définit par \LaTeX ou tiré de l'environnement utilisateur
+\end{description}
 
 \subsection{Une complétion dynamique}
 \label{sub:completion_dyn}
@@ -129,6 +137,8 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 
 \section{Intégration d'une recherche au document courant}
 Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
+
+
 
 <schéma: diagramme de séquence ?>
 
