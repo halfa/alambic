@@ -2,7 +2,6 @@ alambic
 =======
 *This is a Working directory for the project*
 
-
 We are a small team of 3rd year french students in computer science at the INSA Rennes, France.
 
 **Our goal is to improve autocompletion in LaTeXila, and maybe more...**
@@ -12,9 +11,8 @@ If you don't know it, check [the Gnome project page](https://wiki.gnome.org/Apps
 
 Objectives
 ----------
-  - improve autocompletion
-  - provide a guide (in english and french) for contributors
-  - fix bad behaviors when using `Gnome's Dark theme` from tweaktools
+  - improve autocompletion of \ref
+  - provide a guide (in english and french) for begginers contributors
 
 The Team
 --------
