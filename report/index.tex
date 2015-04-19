@@ -11,7 +11,7 @@
 \include{./lst_config}
 
 % Pour les figures
-\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{pstricks}
 \usepackage{epsfig}
 
 \usepackage{tikz}
@@ -133,7 +133,7 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 \section{Intégration d'une recherche au document courant}
 Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
 
-%\include{./draw/flow_parser_call}
+\include{./draw/flow_parser_call}
 
 Ces résultats sont ensuite intégré au \textit{Completion Provider}.
 
@@ -164,6 +164,8 @@ public class CompletionProvider : GLib.Object, SourceCompletionProvider
         string? insert_after;
     }
 \end{lstlisting}
+
+\include{./draw/uml_completion_structure}
 
 \section{Intégration d'une recherche à plusieurs documents}
 
