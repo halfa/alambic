@@ -7,23 +7,11 @@
 \usepackage{listings}
 \usepackage{hyperref}
 
-% listings for Vala
-% Vala definitions
-%
-% \lst definelanguage{Vala}[Sharp]{C}%
-%   {morekeywords={CCode,DBus,Test,cname,cheader_filename,type_id,%
-%       marshaller_type_name,get_value_function,set_value_function,%
-%       default_value,IntegerType,rank,type_signature,size_t,int8,int16,%
-%       int32,uint32,uint16,uint8,int64,uint64,float,double,time_t,%
-%       SimpleType,unichar,cprefix,has_type_id,get,set,ref_function,%
-%       unref_function,free_function,has_target,Compact,delegate,%
-%       destroy_function,PrintFormat,Diagnostics,FILE,LINE,METHOD,%
-%       errordomain,array_length_type,has_array_length,is_null_terminated,%
-%       ReturnsModifiedPointer,dup_function,weak,owned,unowned,value,var,%
-%       connect,async},%
-%     morecomment=[s]{"""}{"""}
-%     }[keywords,strings]
-% from https://mail.gnome.org/archives/vala-list/2009-October/msg00139.html
+% Pour les figures
+\usepackage[usenames,dvipsnames]{pstricks}
+\usepackage{epsfig}
+
+\usepackage{tikz}
 
 %% ** Begin document ** %%
 
@@ -50,11 +38,11 @@ Cette étude pratique en particulier se présente sous la forme d'une contributi
 \label{sec:latexila}
 Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet. Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. LaTeXiLa adopte une approche centré sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}} par exemple. De par cette philosophie, il ne possède pas de module WYSIWYG\footnote{What You See Is What You Get - Un mode d'édition ou l'utilisateur édite directement une vue correspondant au rendu final}.
 
-\include{draw/UI.tex}
+%\include{./draw/UI}
 
 %see more @https://wiki.gnome.org/Apps/LaTeXila/History
 
-\subsection{À propos de \LaTeX{}}
+\subsection{À propos de \LaTeX}
 LaTeX est un langage utilisé pour la composition de documents. Il permet notamment de mettre en place des feuilles de style normalisées ou encore de construire des expressions mathématiques.
 % write something here ?
 
@@ -111,12 +99,12 @@ La tâche à réaliser est l'amélioration de la complétion des commande de ré
 
 \subsection{La complétion dans LaTeXila 2.2}
 \label{sub:completion}
-La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage \LaTeX en se basant sur un fichier XML descriptif lu au démarrage du programme.
+La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage \LaTeX  en se basant sur un fichier XML descriptif lu au démarrage du programme.
 Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au contenu précédemment tapé par l'utilisateur\ref{cha:compiler}. 
 
 \begin{description}
   \item[Fonction] de la forme \\\textit{fonction}\{argument\}, défini par \LaTeX
-  \item[Argument] peut être définit par \LaTeX ou tiré de l'environnement utilisateur
+  \item[Argument] peut être définit par \LaTeX  ou tiré de l'environnement utilisateur
 \end{description}
 
 \subsection{Une complétion dynamique}
@@ -125,11 +113,15 @@ Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au c
 % section tâche_à_réaliser (end)
 
 \section{Gestion de projet} % (fold)
-\label{sec:git}
-Git est le CVS utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome, mais un miroir est disponible sur Github %adresse 
-Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt officiel.
-Les soumissions sont faites via le bugzilla du projet Gnome, ce qui permet au mainteneur de commenter le code soumis. Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale.
-% subsection git (end)
+
+\subsection{Git}
+\label{sub:git}
+Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome\footnote{\url{git.gnome.org}}, un miroir est également disponible sur Github % adresse 
+Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt pricipale.
+
+\subsection{Bugzilla}
+Les soumissions sont faites via le bugzilla du projet Gnome, ce qui permet au mainteneur de commenter le code soumis.
+Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale du projet.
 
 \chapter{Réalisation}
 La réalisation s'est faite par petits pas. Sur une base de deux semaines de travail, l'équipe se donnait un objectif à atteindre pour le point suivant avec l'encadrant.
@@ -138,9 +130,7 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 \section{Intégration d'une recherche au document courant}
 Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
 
-
-
-<schéma: diagramme de séquence ?>
+%\include{./draw/flow_parser_call}
 
 Il a ensuite fallut intégrer ces résultats à la complétion.
 
