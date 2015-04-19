@@ -6,6 +6,9 @@
 \usepackage{exptech}
 \usepackage{listings}
 \usepackage{hyperref}
+\usepackage{color}
+% Configuration pour le code
+\include{./lst_config}
 
 % Pour les figures
 \usepackage[usenames,dvipsnames]{pstricks}
@@ -132,9 +135,36 @@ Pour commencer, nous avons utilisé un parseur existant, celui permettant de con
 
 %\include{./draw/flow_parser_call}
 
-Il a ensuite fallut intégrer ces résultats à la complétion.
+Ces résultats sont ensuite intégré au \textit{Completion Provider}.
 
-<code de la structure de complétion> 
+\subsection{Invite de complétion}
+
+\lstset{language=C}
+\begin{lstlisting}[frame=single]
+public class CompletionProvider : GLib.Object, SourceCompletionProvider
+{
+    struct CompletionCommand
+    {
+        string name;
+        string? package;
+        CompletionArgument[] args;
+    }
+
+    struct CompletionArgument
+    {
+        string label;
+        bool optional;
+        CompletionChoice[] choices;
+    }
+
+    public struct CompletionChoice
+    {
+        string name;
+        string? package;
+        string? insert;
+        string? insert_after;
+    }
+\end{lstlisting}
 
 \section{Intégration d'une recherche à plusieurs documents}
 
