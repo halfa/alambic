@@ -14,6 +14,11 @@ Objectives
   - improve autocompletion of \ref
   - provide a guide (in english and french) for begginers contributors
 
+Latex writing rules
+-------------------
+  - One sentence per line (to clean up git diff)
+  - It's better to commit at each change that to commit all your work at the end of the day
+
 The Team
 --------
   - Axel "ShadowsWalker" Caro
