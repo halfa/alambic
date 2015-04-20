@@ -135,7 +135,13 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 \section{Intégration d'une recherche au document courant}
 Pour commencer, nous avons utilisé un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
 
+% Le diagramme de fonctionnement du parser
+\begin{figure}[h]
+\label{fig:flow_parser_call}
+\centering
 \include{./draw/flow_parser_call}
+\caption{L'appel au parser.}
+\end{figure}
 
 Ces résultats sont ensuite intégré au \textit{Completion Provider}.
 
@@ -167,7 +173,13 @@ public class CompletionProvider : GLib.Object, SourceCompletionProvider
     }
 \end{lstlisting}
 
+%Le diagramme UML de la structure de completion
+\begin{figure}[h!]
+\label{fig:uml_completion_structure}
+\centering
 \include{./draw/uml_completion_structure}
+\caption{Le diagramme UML de la structure de completion.}
+\end{figure}
 
 \section{Intégration d'une recherche à plusieurs documents}
 
