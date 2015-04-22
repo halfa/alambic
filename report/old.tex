@@ -1,0 +1,217 @@
+\chapter{Réalisation}
+La réalisation s'est faite par petits pas. Sur une base de deux semaines de travail, l'équipe se donnait un objectif à atteindre pour le point suivant avec l'encadrant.
+Ces points bi-mensuels permettaient de discuter des directions à prendre pour le développement.
+
+\section{Intégration d'une recherche au document courant}
+Notre premier objectif a été de récupérer l'ensemble des labels déclarés dans le document courant. Après avoir analysé le code, nous avons décidé d'utiliser tout d'abord un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
+
+% Le diagramme de fonctionnement du parser
+\begin{figure}[h]
+\label{fig:flow_parser_call}
+\centering
+\include{./draw/flow_parser_call}
+\caption{L'appel au parser.}
+\end{figure}
+
+Ces résultats sont ensuite intégrés au \textit{Completion Provider} (classe utilisée jusqu'alors pour gérer la complétion statique).
+
+\subsection{Invite de complétion}
+
+\begin{lstlisting}[frame=single]
+public class CompletionProvider : GLib.Object, SourceCompletionProvider
+{
+    // Structure de la commande
+    struct CompletionCommand
+    {
+        string name;    // Dans notre cas, la commande \\ref
+        string? package;
+        CompletionArgument[] args;  // Dans notre cas, un seul argument
+    }
+    // Structure d'argument de commande
+    struct CompletionArgument
+    {
+        string label;
+        bool optional;
+        CompletionChoice[] choices; // Dans notre cas, l'ensemble des labels déclarés par l'utilisateur
+    }
+    // Structure de la proposition de complétion
+    public struct CompletionChoice
+    {
+        string name;    // Dans notre cas, l'intitulé du label
+        string? package;
+        string? insert;
+        string? insert_after;
+    }
+\end{lstlisting}
+
+%Le diagramme UML de la structure de completion
+\begin{figure}[h!]
+\label{fig:uml_completion_structure}
+\centering
+\include{./draw/uml_completion_structure}
+\caption{Le diagramme UML de la structure de completion.}
+\end{figure}
+
+À ce stade, la complétion est fonctionnelle pour le document courant, mais l'utilisation du parseur déjà existant implique certaines contraintes. La mise à jour de la complétion se fait en même temps que celle de l'arbre représentant la structure du document courant, alors qu'il s'agit de deux traitement à priori indépendants. Ainsi, lors du changement de document, la complétion n'est pas mise à jour, et n'est donc pas pertinente. Enfin, on perd les précédentes données de complétion lors du parsing d'un autre document. Conserver ces données éviterai des parsing redondants.
+
+\section{Intégration d'une recherche à plusieurs documents}
+
+L'étape suivante a été l'intégration de la complétion pour tous les documents ouverts dans LaTeXiLa. Ceci pose plusieurs problèmes : comment proposer la complétion liée au document courant ? (problème de filtrage et de mise à jour des données) ; comment stoker ces différents ensembles de choix de complétion ?
+
+Ceci nous a conduit à rechercher une structure de donnée adaptée, et à l'implémenter, après avoir étudié la documentation de ces structures dans le langage vala. Nous avons décidé d'utiliser un ensemble non redondant (HashSet) de choix de complétion, pour chaque document, qui est ensuite envoyé au gestionnaire de complétion. Nous avons doté celui-ci d'une table de hachage, ayant pour clef le chemin absolu d'un document, et comme valeur l'ensemble non redondant de choix de complétion associé. 
+
+Les choix de complétion proposés à l'utilisateur sont ceux du document courant, et sont obtenus grâce à une méthode parcourant la table de hachage, et retournant l'ensemble des choix de complétion à proposer. Ceux-ci sont mis à jour lors de l'appel de l'utilisateur au gestionnaire de complétion. Lors du changement de document, ces choix sont mis à jour automatiquement dans le gestionnaire de complétion.
+
+Désormais, l'ajout d'un choix de complétion est fait dans l'attribut du document précédement mentionné, au lieu de mettre à jour directement les choix de complétion du gestionnaire de complétion. La mise à jour de la table de hachage du gestionnaire de complétion est faite lorsque le parsing du document est terminé. Celui-ci a lieu lors de la sauvegarde du document par l'utilisateur, et lors de son ouverture dans LaTeXila.
+
+\subsection{Structure de donnée}
+
+\begin{lstlisting}[frame=single]
+public class Document : Gtk.SourceBuffer
+{
+    // Référence vers le gestionnaire de complétion
+    private CompletionProvider provider = CompletionProvider.getDefault();
+    
+    // Ensemble non redondant des choix de complétion associés à chaque label du document courant
+    private Gee.HashSet<CompletionProvider.CompletionChoice?> _label_completion_choices = new Gee.HashSet<CompletionProvider.CompletionChoice?>();
+    
+    public void save(bool check_file_changed_on_disk = true; bool force = false)
+    {
+        // ...
+        parse();
+    }
+}
+
+public class CompletionProvider : GLib.Object, SourceCompletionProvider
+{
+    // Table de hachage regroupant tous les choix de complétion de chaque document
+    private Gee.HashMap<string, Gee.HashSet<CompletionChoice?>> _labels_from_files = new Gee.HashMap<string, Gee.HashSet<CompletionChoice?>>();
+    
+    // Représente le dernier document analysé, donc le document courant
+    private string _last_doc = "";
+    
+    // Permet de savoir s'il faut mettre à jour les choix de complétion proposés
+    private bool _labels_modified = false;
+    
+    // Méthode déjà présente appellée lors de l'appel de l'utilisateur au gestionnaire de complétion
+    public void populate (SourceCompletionContext context)
+    {
+        // ...
+        if(_labels_modified)    // Uniquement si il faut mettre à jour les choix de complétion
+            update_label_completion_choices();
+    }
+    
+    public void update_label_completion_choices()
+    {
+        if(_last_doc != "") // Uniquement si la table de hachage contient quelque chose
+        {
+            CompletionChoice[] choices = get_all_labels(_last_doc);
+            CompletionCommand cmd_ref = _commands["\\ref"];
+            cmd_ref.args[0].choices = choices;
+            _commands["\\ref"] = cmd_ref;
+            set_labels_modified(true);
+        }
+    }
+    
+    public CompletionChoice[] get_all_labels(string doc)
+    {
+        CompletionChoice[] choices = {};
+        
+        foreach(var entry in _labels_from_files.entries)
+        {
+            if(entry.key.has_prefix(doc))
+            {
+                foreach(CompletionChoice c in entry.value)
+                {
+                    choices += c;
+                }
+            }
+        }
+    }
+}
+
+public class DocumentTab : Grid
+{
+    private cool view_focused_in ()
+    {
+        // ...
+        document.load (document.location);    // Chargement du document, et analyse
+    }
+}
+\end{lstlisting}
+
+À ce stade, la complétion est fonctionnelle pour tous les fichiers ouverts, les données ne sont pas perdues, leur mise à jour est cohérente, et la mise à jour des choix de complétion du gestionnaire de complétion est faite de façon efficace. % dévelopepr ?
+Cependant, il reste des problèmes : les choix de complétion ne contiennent que les labels déclarés dans le document courant, alors que le principe du langage \LaTeX{} est de permettre les références entre documents. Il faut donc revoir le filtrage des choix de complétion. Cet aspect nous conduit également à proposer des choix de complétion provenant de documents qui n'ont pas été ouverts.
+
+\section{Intégration des fichiers non-ouverts}
+
+Durant cette étape, nous avons répondu aux problèmes précédemment cités. Après discussion avec notre encadrant, nous avons décider de limiter les choix de complétion pour un document à l'ensemble des labels déclarés dans les documents .tex de son répertoire. Ce point est sujet à discussion, et nous y reviendrons par la suite. D'autre part, nous avons décidé de dissocier le parseur des labels du parseur de la structure du document, séparant ainsi ces deux aspects distincts.
+
+Aussi, nous avons décidé de procéder de la façon suivante : à l'ouverture d'un document, on effectue l'analyse de ce document, puis de tous les documents .tex de son répertoire, s'ils n'ont pas déjà été analysé (cas de l'ouverture de plusieurs documents d'un même répertoire). De plus, le filtrage sur les choix de complétion à proposer est fait non plus sur le chemin absolu du document courant, mais sur celui de son répertoire parent. Nous avons approché ce problème de manière récursive, ce qui a conduit à certaines modifications.
+
+Nous nous sommes donc intéressés à la notion de fichier en vala, et à leur manipulation.
+
+\begin{lstlisting}[frame=single]
+public class Document
+{
+    // Désormais, lors du chargement d'un document, on spécifie si l'on veut analyser ses frères, ou seulement ce document
+    public void load(File location, bool parse_related)
+    {
+        // ...
+        if(parse_related)
+        {
+            parse_related_documents();
+        } else {
+            parse();
+        }
+    }
+    
+    public void parse_related_documents()
+    {
+        File dir = location.getParent();    // Répertoire parent du document courant
+        
+        try {
+            FileEnumerator enumerator = dir.enumerate_children(
+                "standard::",
+                FileQueryInfoFlags.NOFOLLOW_SYMLINKS,
+                null);
+            FileInfo info = null;
+            
+            while (((info = enumerator.next_file(null)) != null))
+            {
+                Document doc = new Document();
+                File child = enumerator.get_child(info);
+                string file_path = child.get_parse_name();
+                if(file_path.has_suffix(".tex") && (!already_parsed(file_path)))    // S'il s'agit d'un document .tex, et qu'il n'a pas déjà été analysé, ie il n'y a pas d'entrée correspondante dans la table de hachage du gestionnaire de complétion
+                {
+                    doc.load(child, false); // On ne veut pas analyser les frères de ce document, cela est fait dans la boucle
+                }
+            }
+            enumerator.close();
+        } catch (Error e) {
+            warning ("%s", e.message);
+        }
+    }
+}
+
+public class CompletionProvider : GLib.Object, SourceCompletionProvider
+{
+    // Remplace _last_doc
+    // Représente le répertoire parent du dernier document analysé, donc du document courant
+    private string _last_dir = "";
+    
+    // De la même façon, on remplace le filtrage par document par le filtrage par répertoire dans les méthodes update_label_completion_choices() et get_all_labels()
+}
+\end{lstlisting}
+
+À ce stade, la complétion est entièrement fonctionnelle. Les choix proposés sont les labels déclarés dans les documents .tex du même répertoire que le document courant, l'analyse des documents est faite uniquement au besoin, et le changement de document courant vers un document d'un autre répertoire est fonctionnel.
+
+Le mécanisme de complétion, auparavant \textit{statique} prend désormais en charge une complétion \textit{dynamique} sur les labels déclarés par l'utilisateur. Cependant, notre solution est notamment criticable sur le point suivant : le filtrage des choix de complétion proposés sur le répertoire parent du document courant. En effet, certains utilisateurs sont susceptibles d'utiliser des sous-répertoires pour organiser leurs fichiers, et ne bénéficieraient donc pas de la complétion souhaitée. De plus, il arrive que certains fichiers .tex ne soient que des anciennes versions de rapports, voire des fichiers de tests. Dans ce cas, notre mécanisme de complétion proposerait les labels déclarés dans ces fichiers, alors qu'ils ne sont pas souhaités.
+
+Nous avons donc soumis ce patch au mainteneur du projet, monsieur Wilmet, qui nous as fait part de ses commentaires.
+
+Après discussion avec notre encadrant et monsieur Wilmet, nous avons établi que pour palier à ces problèmes, une refonte de la notion de \textit{projet} comme ils sont organisés dans LaTeXiLa était nécessaire. On pourrait ainsi proposer une complétion ne prenant en compte que les fichiers faisant partie du même projet, et éviter les points précédemment soulevés.
+\chapter{Conclusion}
+Cette étude pratique a été pour nous l'occasion de découvrir le fonctionnement des projets open-source.
+
+\end{document}
