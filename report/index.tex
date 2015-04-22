@@ -14,6 +14,9 @@
 
 \usepackage{tikz}
 
+\setlength{\parskip}{1em}
+
+
 %% ** Begin document ** %%
 
 \title{Étude pratique : Amélioration de la complétion automatique de \LaTeX{}ila}
@@ -35,6 +38,7 @@ Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses co
 \chapter{Introduction}
 \label{cha:Introduction}
 Les \textit{études pratiques} sont des projets réalisés chaque année pas les élèves du département Informatique de l'INSA de Rennes.
+
 Ils s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de développer leur sens du travail et équipe et leur autonomie.
 Les sujets sont aussi divers que variés, allant de prototypes applicatifs au site web, en passant par les réalisations d'IA.
 
@@ -44,6 +48,7 @@ Cette étude pratique en particulier se présente sous la forme d'une contributi
 \label{sec:latexila}
 Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet.
 Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. LaTeXiLa adopte une approche centrée sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}} par exemple.
+
 De par cette philosophie, il ne possède pas de module WYSIWYG\footnote{What You See Is What You Get - Un mode d'édition ou l'utilisateur édite directement une vue correspondant au rendu final}.
 
 %\include{./draw/UI}
@@ -145,6 +150,7 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 
 \section{Intégration d'une recherche au document courant}
 Notre premier objectif a été de récupérer l'ensemble des labels déclarés dans le document courant.
+
 Après avoir analysé le code, nous avons décidé d'utiliser tout d'abord un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
 Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe utilisée jusqu'alors pour gérer la complétion statique, et mis à jour lors de l'ouverture et de la sauvegarde du document.
 
