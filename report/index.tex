@@ -30,12 +30,16 @@
 
 \maketitle %affichage du titre
 \tableofcontents %table des matières
+\newpage
 
-\section{Remerciements} % (fold)
+\section*{Remerciements} % (fold)
+\begin{center}
 \label{sec:remerciements}
 Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de LaTeXila.
+\end{center}
+\vspace{\fill}
 
-\chapter{Introduction}
+\chapter*{Introduction}
 \label{cha:Introduction}
 Les \textit{études pratiques} sont des projets réalisés chaque année pas les élèves du département Informatique de l'INSA de Rennes.
 
@@ -108,7 +112,7 @@ Ainsi, un \textit{jhbuild build latexila} réalise, pour chaque dépendances de 
 Dans le cas de la compilation d'une version de test, on utilisera \textit{jhbuild make}, qui nous permettra de compiler sur la branche courante.
 % à développer
 
-\chapter{Étude pratique} % (fold)
+\chapter*{Étude pratique} % (fold)
 \label{cha:etude_pratique}
 Le but de cette étude pratique est d'ajouter à la complétion le support de la commande \textbf{\textbackslash{}ref} qui proposerait comme complétion une liste des clef des \textbf{\textbackslash{}label}.
 
@@ -144,7 +148,7 @@ Bugzilla\footnote{\url{www.bugzilla.org}} est une plateforme de suivi de bug gra
 Une soumission de bug sur la plateforme du projet donne lieu à une page dédiée\footnote{Exemple de la page de ce projet \url{https://bugzilla.gnome.org/show_bug.cgi?id=748069}}, ce qui permet au mainteneur de commenter le rapport d'incident et le code soumis.
 Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale du projet.
 
-\chapter{Réalisation}
+\chapter*{Réalisation}
 La réalisation s'est faite par petits pas. Sur une base de deux semaines de travail, l'équipe se donnait un objectif à atteindre pour le point suivant avec l'encadrant.
 Ces points bi-mensuels permettaient de discuter des directions à prendre pour le développement.
 
@@ -216,7 +220,7 @@ D'autre part, nous avons décidé de dissocier le parseur des labels du parseur 
 À ce stade, la complétion est entièrement fonctionnelle.
 Les choix proposés sont les labels déclarés dans les documents .tex du même répertoire que le document courant, l'analyse des documents est faite uniquement au besoin, et le changement de document courant vers un document d'un autre répertoire est fonctionnel.
 
-\chapter{Conclusion}
+\chapter*{Conclusion}
 Le mécanisme de complétion, auparavant \textit{statique} prend désormais en charge une complétion \textit{dynamique} sur les labels déclarés par l'utilisateur.
 Cependant, notre solution est notamment criticable sur le point suivant : le filtrage des choix de complétion proposés, sur le répertoire parent du document courant.
 En effet, certains utilisateurs sont susceptibles d'utiliser des sous-répertoires pour organiser leurs fichiers, et ne bénéficieraient donc pas de la complétion souhaitée.
