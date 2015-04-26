@@ -11,7 +11,7 @@
 % Pour les figures
 \usepackage{pstricks}
 \usepackage{epsfig}
-
+\usepackage[justification=centering]{caption}
 \usepackage{tikz}
 
 \setlength{\parskip}{1em}
@@ -44,7 +44,7 @@
 \section*{\centerline{Remerciements}} % (fold)
 \begin{center}
 \label{sec:remerciements}
-Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de LaTeXila.
+Nous remercions Arnaud Blouin (IRISA/INSA), notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de Latexila, pour sont aide.
 \end{center}
 
 \vfill
@@ -55,42 +55,56 @@ Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses co
 \label{cha:Introduction}
 Les \textit{études pratiques} sont des projets réalisés chaque année pas les élèves du département Informatique de l'INSA de Rennes.
 
-Ils s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de développer leur sens du travail et équipe et leur autonomie.
-Les sujets sont aussi divers que variés, allant de prototypes applicatifs au site web, en passant par les réalisations d'IA.
+Elles s'étalent sur toute la durée de l'année scolaire et visent à permettre aux étudiants de développer leur sens du travail en équipe ainsi que leur autonomie.
+Les sujets sont aussi divers que variés, allant de prototypes applicatifs aux sites web, en passant par les réalisations d'IA.
 
-Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est ouvert\footnote{Logiciel dit "open-source"}, c'est à dire qu'il est mis à disposition du public pour modification.
+Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est libre, c'est à dire qu'il est mis à disposition du public qui peut s'il le souhaite proposer des améliorations.
 
 \section{Latexila}
 \label{sec:latexila}
-Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009 à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet.
+Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009\footnote{Voir \url{https://wiki.gnome.org/Apps/LaTeXila/History}} à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet.
 Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. LaTeXiLa adopte une approche centrée sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}} par exemple.
 
-De par cette philosophie, il ne possède pas de module WYSIWYG\footnote{What You See Is What You Get - Un mode d'édition ou l'utilisateur édite directement une vue correspondant au rendu final}.
+De par cette philosophie, il ne possède pas de module WYSIWYG\footnote{What You See Is What You Get - Un mode d'édition ou l'utilisateur édite directement une vue correspondant au rendu final}, ce qui le rend moins facile d'accès.
+Il met cepandant à la disposition de l'utilisateur des outils puissant qui en font bien plus qu'un simple éditeur de texte, comme:
 
-%\include{./draw/UI}
-
-%see more @https://wiki.gnome.org/Apps/LaTeXila/History
+\begin{itemize}
+	\item Compilation assistée
+	\item Gestion de projet simplifiée
+	\item Complétion à la saisie des commandes \LaTeX
+\end{itemize}
+\newpage
 
 \subsection{À propos de \LaTeX}
-LaTeX est un langage bien connu de la communauté scientifique, utilisé pour la composition de documents.
+\LaTeX  est un langage bien connu de la communauté scientifique, utilisé pour la composition de documents.
 Il permet notamment de mettre en place des feuilles de style normalisées, ou encore de construire des expressions mathématiques.
+Ce document a été écrit en \LaTeX.
 % write something here ?
 
 \subsection{Le langage Vala}
 \label{sub:vala}
-Vala est un langage développé pour le projet Gnome.
-Il vise à être une alternative au C\# et au Java, en proposant une syntaxe puissante pour la programmation orientée objet.
-Il se base sur la librairie GObject et est compilé en C via la commande `valac`.
-% more @ https://wiki.gnome.org/Projects/Vala/About
+Vala\footnote{\textit{\url{https://wiki.gnome.org/Projects/Vala/About}}} est un langage développé pour le projet Gnome.
+Il vise à être une alternative au C\# et au Java, en proposant une syntaxe puissante orientée objet.
+Il se base sur la librairie GObject et est compilé en C via la commande \texttt{valac}.
 
 \begin{figure}[h] % TODO réduire l'espacement
 \begin{lstlisting}
-void main () {
-    print ("hello, world\n");
-}
-\end{lstlisting}\caption{"Hello Word" en Vala, tiré de \url{wiki.gnome.org/Projects/Vala/BasicSample}}
-\end{figure}
+int main (string[] args) {
 
+    // Output the number of arguments
+    stdout.printf ("%d command line argument(s):\n", args.length);
+
+    // Enumerate all command line arguments
+    foreach (string arg in args) {
+        stdout.printf ("%s\n", arg);
+    }
+
+    // Exit code (0: success, 1: failure)
+    return 0;
+}
+\end{lstlisting}
+\caption{"Command-Line Arguments and Exit Code" en Vala, tiré de \url{wiki.gnome.org/Projects/Vala/BasicSample}}
+\end{figure}
 \section{Compiler LaTeXila}
 \label{cha:compiler}
 La compilation d'un projet GNOME est un processus complexe pour un non-initié.
@@ -99,27 +113,21 @@ On utilise donc des outils spécifiques de manière à séparer environnement ut
 
 \subsection{Jhbuild}
 \label{sub:jhbuild}
-
-\begin{quote}
-JHBuild allows you to build and run Gnome platform and applications building the required modules in a sandbox environment, isolating the installation ; so there is no need to build and run Gnome inside a virtual machine. \textit{\url{wiki.gnome.org}}
-\end{quote}
-
-Comme indiqué ci-dessus, il s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environnement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version.
+JHBuild s'agit d'un outil conçu pour permettre au développeur de construire les librairies d'un projet dans un environnement bac-à-sable, de manière à éviter une instabilité de la machine de développement causée par l'utilisation de librairies en pré-version.
 Il fournit certaines commandes très utiles, telles que :
 
-\begin{description}
-  \item[jhbuild update <package>] Met à jour le paquet et toutes ses dépendances.
-  \item[jhbuild build <package>] Met à jour et compile le paquet et toutes ses dépendances.
-  \item[jhbuild buildone <package>] Ne compile que le paquet ciblé.
-  \item[jhbuild make <target>] Exécute le Makefile à l'emplacement courant.
-\end{description}
+\begin{figure}[h]
+\begin{tabular}{|l|l|}
+  \hline \texttt{jhbuild update <package>} & Met à jour le paquet et toutes ses dépendances. \\
+  \hline \texttt{jhbuild build <package>} & Met à jour et compile paquet et dépendances. \\
+  \hline \texttt{jhbuild buildone <package>} & Ne compile que le paquet ciblé. \\
+  \hline \texttt{jhbuild make <target>} & Exécute le Makefile à l'emplacement courant. \\
+  \hline
+\end{tabular}
+\caption{Utilisation de JHBuild}
+\end{figure}
 
-Ainsi, un \textit{jhbuild build latexila} réalise, pour chaque dépendances de latexila :
-
-\begin{description} 
-  \item[Mise à jour] Un \textit{checkout} sur la branche master du dépôt, suivi d'un \textit{fetch} puis d'un \textit{rebase}.
-  \item[Compilation] Exécution du \textit{make all}.
-\end{description}
+Ainsi, un \textit{jhbuild build latexila} réalise, pour chaque dépendances de latexila un \textit{checkout} sur la branche master du dépôt, suivi d'un \textit{fetch} puis d'un \textit{rebase} suivi de l'exécution d'un \textit{make all}.
 
 Dans le cas de la compilation d'une version de test, on utilisera \textit{jhbuild make}, qui nous permettra de compiler sur la branche courante.
 % à développer
