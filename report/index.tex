@@ -143,29 +143,31 @@ La tâche à réaliser est l'amélioration de la complétion des commande de ré
 
 \subsection{La complétion dans LaTeXila 2.2}
 \label{sub:completion}
-La version 2.2 de LaTeXiLa fournit une complétion exhaustive des éléments statiques du langage \LaTeX  en se basant sur un fichier XML descriptif lu au démarrage du programme.
-Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au contenu précédemment tapé par l'utilisateur. 
+La version 2.2 de Latexila fournit une complétion exhaustive des éléments statiques du langage \LaTeX~se basant sur un fichier XML descriptif lu au démarrage du programme.
+Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au contenu précédemment tapé par l'utilisateur. Cette complétion propose :
 
 \begin{description}
   \item[Fonction] de la forme \textbackslash\textit{fonction}\{argument\}, défini par \LaTeX
-  \item[Argument] peut être définit par \LaTeX  ou tiré de l'environnement utilisateur
+  \item[Argument] peut être définit par \LaTeX~ou tiré de l'environnement utilisateur\footnote{non pris en charge car nécéssite une complétion dynamique}
 \end{description}
 
 \subsection{Une complétion dynamique}
 \label{sub:completion_dyn}
-Afin d'améliorer ce mécanisme de complétion pour qu'il prenne en charge la commande \textbf{\textbackslash{}ref}, il convient donc de lui adjoindre une composante \textit{dynamique}, qui prendra en compte les éléments \textbf{\textbackslash{}label} déclarés par l'utilisateur.
+Afin d'améliorer ce mécanisme de complétion pour qu'il prenne en charge l'argument de la commande \textbf{\textbackslash{}ref}, il convient de lui adjoindre une composante \textit{dynamique}, qui prendra en compte les éléments \textbf{\textbackslash{}label} déclarés par l'utilisateur.
 % section tâche_à_réaliser (end)
 
 \section{Gestion de projet} % (fold)
 
 \subsection{Git}
 \label{sub:git}
-Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt du projet Gnome\footnote{\url{git.gnome.org}}, un miroir est également disponible sur Github % adresse 
+Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt git du projet Gnome\footnote{\url{git.gnome.org}}  et un miroir est également disponible sur Github\footnote{\url{https://github.com/GNOME/latexila}}.
 Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt pricipal.
+Un patch entre la \textbf{branche principale} et la \textbf{branche de test} est ensuite créé avec \texttt{git patch} et posté sur le bugzilla du projet.
 
 \subsection{Bugzilla}
 Les soumissions\footnote{Propositions de contribution au projet} sont faites via le Bugzilla du projet Gnome.
 Bugzilla\footnote{\url{www.bugzilla.org}} est une plateforme de suivi de bug gratuite et libre, qui a vocation à faciliter la collaboration entre les développeurs.
+
 Une soumission de bug sur la plateforme du projet donne lieu à une page dédiée\footnote{Exemple de la page de ce projet \url{https://bugzilla.gnome.org/show_bug.cgi?id=748069}}, ce qui permet au mainteneur de commenter le rapport d'incident et le code soumis.
 Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale du projet.
 
@@ -176,7 +178,7 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 \section{Intégration d'une recherche au document courant}
 Notre premier objectif a été de récupérer l'ensemble des labels déclarés dans le document courant.
 
-Après avoir analysé le code, nous avons décidé d'utiliser tout d'abord un parseur existant, celui permettant de construire l'arbre représentatif de la structure des documents.
+Après avoir analysé le code, nous avons décidé d'utiliser tout d'abord un parseur existant, celui permettant de construire l'arbre représentatif de la structure du document.
 Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe utilisée jusqu'alors pour gérer la complétion statique, et mis à jour lors de l'ouverture et de la sauvegarde du document.
 
 % Le diagramme de fonctionnement du parser
@@ -196,14 +198,16 @@ Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe u
 \caption{Le diagramme UML de la structure de completion.}
 \end{figure}
 
-À ce stade, la complétion prend en charge le document courant, mais l'utilisation du parseur déjà existant implique certaines contraintes, notamment concernant le moment d'appel au parseur.
-La mise à jour de la complétion se fait en même temps que celle de l'arbre représentant la structure du document courant, ainsi lors du changement de document, par exemple, la complétion n'est pas mise à jour et n'est donc pas pertinente.
-D'autre part, on perd les précédentes données de complétion lors du parsing d'un autre document.
-Conserver ces données éviterai des parsing redondants.
+À ce stade, la complétion prend en charge le document courant, mais l'utilisation du parseur déjà existant implique certaines contraintes, celle de ne pas pouvoir l'appeler quand on le souhaite.
+La mise à jour de la complétion se fait donc en même temps que celle de l'arbre représentant la structure du document courant. 
+Ainsi lors du changement de document, par exemple, la complétion n'est pas mise à jour et n'est donc pas pertinente.
+D'autre part, on perd les précédentes données de complétion lors du parsage d'un autre document.
+Conserver ces données éviterai des parsage redondants et permettrait d'économiser du temps de calcul.
 
 \section{Intégration d'une recherche à plusieurs documents}
-L'étape suivante a été l'intégration de la complétion pour tous les documents ouverts dans LaTeXiLa, permettant ainsi de proposer une complétion propre à chaque document.
-Ceci pose plusieurs problèmes : comment proposer la complétion liée au document courant ? (problème de filtrage et de mise à jour des données) ; comment stoker ces différents ensembles de choix de complétion ?
+L'étape suivante a été l'intégration de la complétion pour tous les documents ouverts dans LaTeXiLa, permettant ainsi de proposer une complétion propre à chaque document et d'éviter les propositions inappropriées.
+Problèmes : comment choisir parmis les propositions celles liée au document courant ? Et comment stoker ces différents ensembles de choix de complétion de manière à pouvoir les mettre à jour ?
+
 Ceci nous a conduit à rechercher une structure de donnée adaptée, et à l'implémenter après avoir étudié la documentation de ces structures dans le langage vala.
 Nous avons opté pour l'ajout d'une table de hachage au \textit{CompletionProvider}, qui stokera les ensemble de choix de complétion, indexés par le chemin absolu du fichier .tex auquel ils correspondent.
 
