@@ -91,7 +91,7 @@ public class CompletionProvider : GLib.Object, SourceCompletionProvider
     
     // Table de hachage contenant des ensembles non redondants
     // de choix de complétion d'un fichier, indexée par
-    // le chemin absolu du fichier .
+    // le chemin absolu du fichier.
     // L'ajout de données à cette table de hachage est fait
     // par les instances de la classe Document.
     private Gee.HashMap<string, Gee.HashSet<CompletionChoice?>> 
@@ -127,7 +127,7 @@ public class CompletionProvider : GLib.Object, SourceCompletionProvider
       get_labels_from_files (){// ...}
     
     // Retourne un tableau de CompletionChoice correspondant
-    // aux labels contenu dans la table de hachage, provenant
+    // aux labels contenus dans la table de hachage, provenant
     // des fichiers du répertoire passé en paramètre.
     public CompletionChoice[] get_all_labels (string dir)
     {
@@ -266,7 +266,7 @@ public class Document : Gtk.SourceBuffer
     }
         
     // Permet de savoir si le document a déjà été parcouru,
-    // ie : il existe une entrée opur ce document dans la
+    // ie : il existe une entrée pour ce document dans la
     // table de hachage.
     public bool already_parsed (string file_path)
     {
@@ -278,7 +278,8 @@ public class Document : Gtk.SourceBuffer
     // complétion ont été mis à jour.
     // Affecte à l'attribut _last_dir le chemin absolu
     // du répertoire parent du document, permettant ainsi le
-    // filtrage des choix de complétion proposés à l'utilisateur.
+    // filtrage des choix de complétion proposés à
+    // l'utilisateur.
     public void notify_label_changed ()
     {
         provider.set_labels_modified (true);
