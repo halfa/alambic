@@ -55,61 +55,62 @@ Afin d'implémenter notre solution, nous y avons apporté les modifications suiv
 \begin{lstlisting}[frame=single]
 public class CompletionProvider : GLib.Object, SourceCompletionProvider
 {
-    // Structure de donnée représentant l'arborescence
-    // des choix de complétion.
-    // La commande \ref a pour format : \ref{nom_du_label}
-    
-    // Structure de la commande
-    struct CompletionCommand
-    {
-        string name;    // "\ref"
-        string? package;
-        CompletionArgument[] args;  // Un seul argument
-    }
-    // Structure d'argument de commande
-    struct CompletionArgument
-    {
-        string label;
-        bool optional;
-        CompletionChoice[] choices;
-        // L'ensemble des labels déclarés par l'utilisateur.
-    }
-    // Structure de la proposition de complétion
-    public struct CompletionChoice
-    {
-        string name;    // L'intitulé du label
-        string? package;
-        string? insert;
-        string? insert_after;
-    }
-    
-    // Ensemble des commandes proposant des choix de complétion.
-    // Doit être mis à jour pour la commande \ref.
-    private Gee.HashMap<string, CompletionCommand?> _commands;
-    
-    // Attributs ajoutés à la classe :
-    
-    // Table de hachage contenant des ensembles non redondants
-    // de choix de complétion d'un fichier, indexée par
-    // le chemin absolu du fichier.
-    // L'ajout de données à cette table de hachage est fait
-    // par les instances de la classe Document.
-    private Gee.HashMap<string, Gee.HashSet<CompletionChoice?>> 
-      _labels_from_files =
-      new Gee.HashMap<string, Gee.HashSet<CompletionChoice?>>();
-    
-    // Booléen utilisé pour mettre à jour les choix de
-    // complétion uniquement quand cela est nécessaire
-    // (soucis d'efficacité).
-    private bool _labels_modified = false;
-    
-    // Chaîne de caractères utilisée pour filtrer les choix de
-    // complétion proposés selon le contexte.
-    // Le contexte ici utilisé est le chemin absolu
-    // du répertoire parent du document courant.
-    // On propose ainsi une complétion des labels déclarés dans
-    // les fichiers .tex de ce répertoire.
-    private string _last_dir = "";
+  // Structure de donnée représentant l'arborescence
+  // des choix de complétion.
+  // La commande \ref a pour format : \ref{nom_du_label}
+  
+  // Structure de la commande
+  struct CompletionCommand
+  {
+    string name;  // "\ref".
+    string? package;
+    CompletionArgument[] args;  // Un seul argument.
+  }
+  // Structure d'argument de commande
+  struct CompletionArgument
+  {
+    string label;
+    bool optional;
+    CompletionChoice[] choices;
+    // L'ensemble des labels déclarés par l'utilisateur.
+  }
+  // Structure de la proposition de complétion
+  public struct CompletionChoice
+  {
+    string name;  // L'intitulé du label.
+    string? package;
+    string? insert;
+    string? insert_after;
+  }
+  
+  // Ensemble des commandes proposant des choix de complétion.
+  // Doit être mis à jour pour la commande \ref.
+  private Gee.HashMap<string, CompletionCommand?> _commands;
+  
+  // Attributs ajoutés à la classe :
+  
+  // Table de hachage contenant des ensembles non redondants
+  // de choix de complétion d'un fichier, indexée par
+  // le chemin absolu du fichier.
+  // L'ajout de données à cette table de hachage est fait
+  // par les instances de la classe Document.
+  private Gee.HashMap<string, Gee.HashSet<CompletionChoice?>> 
+    _labels_from_files =
+    new Gee.HashMap<string, Gee.HashSet<CompletionChoice?>>();
+  
+  // Booléen utilisé pour mettre à jour les choix de
+  // complétion uniquement quand cela est nécessaire
+  // (soucis d'efficacité).
+  private bool _labels_modified = false;
+  
+  // Chaîne de caractères utilisée pour filtrer les choix de
+  // complétion proposés selon le contexte.
+  // Le contexte ici utilisé est le chemin absolu
+  // du répertoire parent du document courant.
+  // On propose ainsi une complétion des labels déclarés dans
+  // les fichiers .tex de ce répertoire.
+  private string _last_dir = "";
+}
 \end{lstlisting}
 
 \section{Méthodes}
@@ -118,65 +119,65 @@ public class CompletionProvider : GLib.Object, SourceCompletionProvider
 \begin{lstlisting}[frame=single]
 public class CompletionProvider : GLib.Object, SourceCompletionProvider
 {
-    // Getters et setters pour certains des attributs
-    // mentionnés plus haut.
-    public void set_labels_modified (bool b){// ...}
-    public void set_last_dir (string dir){// ...}
-    // Utilisée par les instances de la classe Document.
-    public Gee.HashMap<string, Gee.HashSet<CompletionChoice?>> 
-      get_labels_from_files (){// ...}
+  // Getters et setters pour certains des attributs
+  // mentionnés plus haut.
+  public void set_labels_modified (bool b){// ...}
+  public void set_last_dir (string dir){// ...}
+  // Utilisée par les instances de la classe Document.
+  public Gee.HashMap<string, Gee.HashSet<CompletionChoice?>> 
+    get_labels_from_files (){// ...}
+  
+  // Retourne un tableau de CompletionChoice correspondant
+  // aux labels contenus dans la table de hachage, provenant
+  // des fichiers du répertoire passé en paramètre.
+  public CompletionChoice[] get_all_labels (string dir)
+  {
+    CompletionChoice[] choices = {};
     
-    // Retourne un tableau de CompletionChoice correspondant
-    // aux labels contenus dans la table de hachage, provenant
-    // des fichiers du répertoire passé en paramètre.
-    public CompletionChoice[] get_all_labels (string dir)
-    {
-        CompletionChoice[] choices = {};
-        
-        foreach (var entry in _labels_from_files.entries)
-            // Filtrage des entrées selon le chemin absolu
-            // du répertoire.
-            if (entry.key.has_prefix (dir))
-                foreach (CompletionChoice c in entry.value)
-                    choices += c;
-        
-        return choices;
-    }
+    foreach (var entry in _labels_from_files.entries)
+      // Filtrage des entrées selon le chemin absolu
+      // du répertoire.
+      if (entry.key.has_prefix (dir))
+        foreach (CompletionChoice c in entry.value)
+          choices += c;
     
-    // Met à jour la structure des choix de complétion
-    // pour la commande \ref en remplacant le champ adéquat de
-    // _commands par la nouvelle liste.
-    public void update_label_completion_choices ()
+    return choices;
+  }
+  
+  // Met à jour la structure des choix de complétion
+  // pour la commande \ref en remplacant le champ adéquat de
+  // _commands par la nouvelle liste.
+  public void update_label_completion_choices ()
+  {
+    if (_last_dir != "")
     {
-        if (_last_dir != "")
-        {
-            // Liste des labels, filtrés selon le contexte.
-            CompletionChoice[] choices =
-              get_all_labels (_last_dir);
-            CompletionCommand cmd_ref = _commands["\\ref"];
+      // Liste des labels, filtrés selon le contexte.
+      CompletionChoice[] choices =
+        get_all_labels (_last_dir);
+      CompletionCommand cmd_ref = _commands["\\ref"];
 
-            cmd_ref.args[0].choices = choices;
-            _commands["\\ref"] = cmd_ref;
+      cmd_ref.args[0].choices = choices;
+      _commands["\\ref"] = cmd_ref;
 
-            // Précise la cohérence entre les choix maintenant
-            // proposés, et les données de la table de hachage.
-            set_labels_modified (false);
-        }
+      // Précise la cohérence entre les choix maintenant
+      // proposés, et les données de la table de hachage.
+      set_labels_modified (false);
     }
+  }
+  
+  // Appellée lors d'une demande d'affichage des
+  // choix de complétion par l'utilisateur.
+  // C'est à ce moment que les choix de complétion proposés
+  // sont mis à jour, si la mise à jour est requise.
+  public void populate (SourceCompletionContext context)
+  {
+    // Si les choix proposés ne sont pas à jour avec
+    // les entrées de la table de hachage.
+    if (_labels_modified)
+      update_label_completion_choices ();
     
-    // Appellée lors d'une demande d'affichage des
-    // choix de complétion par l'utilisateur.
-    // C'est à ce moment que les choix de complétion proposés
-    // sont mis à jour, si la mise à jour est requise.
-    public void populate (SourceCompletionContext context)
-    {
-        // Si les choix proposés ne sont pas à jour avec
-        // les entrées de la table de hachage.
-        if (_labels_modified)
-            update_label_completion_choices ();
-        
-        // ...
-    }
+    // ...
+  }
 }
 \end{lstlisting}
 
@@ -197,19 +198,19 @@ Afin d'implémenter notre solution, nous y avons apporté les modifications suiv
 \begin{lstlisting}[frame=single]
 public class Document : Gtk.SourceBuffer
 {
-    // Attribut déjà présent, représentant le fichier associé
-    // à cette instance de Document.
-    public File location { get; set; }
+  // Attribut déjà présent, représentant le fichier associé
+  // à cette instance de Document.
+  public File location { get; set; }
 
-    // Référence vers le gestionnaire de complétion par défaut,
-    // partagée par toutes les instances de Document.
-    private CompletionProvider provider = CompletionProvider.get_default();
-    
-    // HashSet. Ensemble non redondant des labels déclarés
-    // dans le document.
-    private Gee.HashSet<CompletionProvider.CompletionChoice?> 
-      _label_completion_choices =
-      new Gee.HashSet<CompletionProvider.CompletionChoice?>();
+  // Référence vers le gestionnaire de complétion par défaut,
+  // partagée par toutes les instances de Document.
+  private CompletionProvider provider = CompletionProvider.get_default();
+  
+  // HashSet. Ensemble non redondant des labels déclarés
+  // dans le document.
+  private Gee.HashSet<CompletionProvider.CompletionChoice?> 
+    _label_completion_choices =
+    new Gee.HashSet<CompletionProvider.CompletionChoice?>();
 }
 \end{lstlisting}
 
@@ -222,73 +223,73 @@ public class Document : Gtk.SourceBuffer
 \begin{lstlisting}[frame=single]
 public class Document : Gtk.SourceBuffer
 {
-    // Ajout d'un choix de complétion associé à l'intitulé
-    // passé en paramètre dans le HashSet.
-    public void add_label_completion_choice (string content)
-    {
-            CompletionProvider.CompletionChoice c = 
-              CompletionProvider.CompletionChoice ();
-            c.name = content;
-            _label_completion_choices.add (c);
-    }
+  // Ajout d'un choix de complétion associé à l'intitulé
+  // passé en paramètre dans le HashSet.
+  public void add_label_completion_choice (string content)
+  {
+    CompletionProvider.CompletionChoice c = 
+      CompletionProvider.CompletionChoice ();
+    c.name = content;
+    _label_completion_choices.add (c);
+  }
+  
+  // Remise à zéro des choix de complétion associés
+  // au document.
+  // Utilisée au début de chaque parcours du document.
+  public void drop_label_completion_choices ()
+  {
+    _label_completion_choices.clear ();
+  }
+  
+  // Met à jour la table de hachage du gestionnaire de
+  // complétion, avec comme clé le chemin absolu du
+  // document, et comme valeur le HashSet maintenant complet.
+  public void update_label_completion_choices_from_file ()
+  {
+    string file_path = location.get_parse_name ();
     
-    // Remise à zéro des choix de complétion associés
-    // au document.
-    // Utilisée au début de chaque parcours du document.
-    public void drop_label_completion_choices ()
+    // S'il s'agit de la création d'une entrée dans
+    // la table de hachage, ie : s'il s'agit du premier
+    // parcours de ce document.
+    if (! already_parsed (file_path))
     {
-        _label_completion_choices.clear ();
+      provider.get_labels_from_files ().@set
+        (file_path, _label_completion_choices);
     }
-    
-    // Met à jour la table de hachage du gestionnaire de
-    // complétion, avec comme clé le chemin absolu du
-    // document, et comme valeur le HashSet maintenant complet.
-    public void update_label_completion_choices_from_file ()
+    // S'il s'agit de la mise à jour d'une entrée dans la
+    // table de hachage, ie : s'il ne s'agit pas du
+    // premier parcours de ce document.
+    else
     {
-        string file_path = location.get_parse_name ();
-        
-        // S'il s'agit de la création d'une entrée dans
-        // la table de hachage, ie : s'il s'agit du premier
-        // parcours de ce document.
-        if (! already_parsed (file_path))
-        {
-            provider.get_labels_from_files ().@set
-              (file_path, _label_completion_choices);
-        }
-        // S'il s'agit de la mise à jour d'une entrée dans la
-        // table de hachage, ie : s'il ne s'agit pas du
-        // premier parcours de ce document.
-        else
-        {
-            provider.get_labels_from_files ()[file_path] =
-              _label_completion_choices;
-        }
+      provider.get_labels_from_files ()[file_path] =
+        _label_completion_choices;
     }
-        
-    // Permet de savoir si le document a déjà été parcouru,
-    // ie : il existe une entrée pour ce document dans la
-    // table de hachage.
-    public bool already_parsed (string file_path)
-    {
-        return provider.get_labels_from_files ()
-          .has_key (file_path);
-    }
-    
-    // Informe le gestionnaire de complétion que des choix de
-    // complétion ont été mis à jour.
-    // Affecte à l'attribut _last_dir le chemin absolu
-    // du répertoire parent du document, permettant ainsi le
-    // filtrage des choix de complétion proposés à
-    // l'utilisateur.
-    public void notify_label_changed ()
-    {
-        provider.set_labels_modified (true);
-        provider.set_last_dir (find_directory ());
-    }
-    
-    // Retourne une chaîne de caractères représentant le chemin
-    // absolu du répertoire parent du document.
-    public string find_directory (){//...}
+  }
+      
+  // Permet de savoir si le document a déjà été parcouru,
+  // ie : il existe une entrée pour ce document dans la
+  // table de hachage.
+  public bool already_parsed (string file_path)
+  {
+    return provider.get_labels_from_files ()
+      .has_key (file_path);
+  }
+  
+  // Informe le gestionnaire de complétion que des choix de
+  // complétion ont été mis à jour.
+  // Affecte à l'attribut _last_dir le chemin absolu
+  // du répertoire parent du document, permettant ainsi le
+  // filtrage des choix de complétion proposés à
+  // l'utilisateur.
+  public void notify_label_changed ()
+  {
+    provider.set_labels_modified (true);
+    provider.set_last_dir (find_directory ());
+  }
+  
+  // Retourne une chaîne de caractères représentant le chemin
+  // absolu du répertoire parent du document.
+  public string find_directory (){//...}
 }
 \end{lstlisting}
 
@@ -298,53 +299,54 @@ public class Document : Gtk.SourceBuffer
 \begin{lstlisting}[frame=single]
 public class Document : Gtk.SourceBuffer
 {
-    // Méthode appellée pour demander un parcours du document.
-    public void parse ()
+  // Méthode appellée pour demander un parcours du document.
+  public void parse ()
+  {
+    // ...
+    // Déjà existant. Le parseur demande un appel à
+    // parse_impl().
+    Idle.add (() =>
     {
-        // ...
-        // Déjà existant. Le parseur demande un appel à
-        // parse_impl().
-        Idle.add (() =>
-        {
-            return parse_impl ();
-        });
-    }
+      return parse_impl ();
+    });
+  }
+  
+  // Déjà existant. Parcours du document.
+  private bool parse_impl ()
+  {
+    // Remise à zéro des choix de complétion associés à
+    // ce document.
+    drop_label_completion_choices ();
+    // Informe le gestionnaire de complétion que les choix
+    // de complétion associés à ce document ont été
+    // modifiés.
+    notify_label_changed ();
     
-    // Déjà existant. Parcours du document.
-    private bool parse_impl ()
-    {
-        // Remise à zéro des choix de complétion associés à
-        // ce document.
-        drop_label_completion_choices ();
-        // Informe le gestionnaire de complétion que les choix
-        // de complétion associés à ce document ont été
-        // modifiés.
-        notify_label_changed ();
-        
-        // ...
-        // Met à jour le contenu de la table de hachage du
-        // gestionnaire de complétion.
-        update_label_completion_choices_from_file ();
-        // ...
-    }
+    // ...
+    // Met à jour le contenu de la table de hachage du
+    // gestionnaire de complétion.
+    update_label_completion_choices_from_file ();
+    // ...
+  }
+  
+  // Déjà existant. Appellée pour détecter la présence d'un
+  // élément d'un certain type.
+  private bool search_markup (// ...)
+  {
+    type = null;
     
-    // Déjà existant. Appellée pour détecter la présence d'un
-    // élément d'un certain type.
-    private bool search_markup (// ...)
+    // ...
+    // Ajout de la gestion du cas de l'élément de type
+    // label.
+    if (type == StructType.LABEL)
     {
-        type = null;
-        
-        // ...
-        // Ajout de la gestion du cas de l'élément de type
-        // label.
-        if (type == StructType.LABEL) {
-            // Ajout du choix de complétion associé à
-            // l'intitulé du label (contents) dans le
-            // HashSet.
-            add_label_completion_choice (contents);
-        }
-        // ...
+      // Ajout du choix de complétion associé à
+      // l'intitulé du label (contents) dans le
+      // HashSet.
+      add_label_completion_choice (contents);
     }
+    // ...
+  }
 }
 \end{lstlisting}
 
@@ -354,70 +356,69 @@ public class Document : Gtk.SourceBuffer
 \begin{lstlisting}[frame=single]
 public class Document : Gtk.SourceBuffer
 {
-    // Méthode appellée pour charger le contenu d'un document.
-    // Le paramètre booléen parse_related à été ajouté afin de
-    // spécifier s'il faut analyser les documents .tex du même
-    // répertoire (true), ou seulement le document
-    // spécifié (false).
-    public void load (File location, bool parse_related)
-    {
-        // ...
-        if(parse_related) {
-            parse_related_documents ();
-        } else {
-            parse ();
-        }
+  // Méthode appellée pour charger le contenu d'un document.
+  // Le paramètre booléen parse_related à été ajouté afin de
+  // spécifier s'il faut analyser les documents .tex du même
+  // répertoire (true), ou seulement le document
+  // spécifié (false).
+  public void load (File location, bool parse_related)
+  {
+    // ...
+    if(parse_related) {
+      parse_related_documents ();
+    } else {
+      parse ();
     }
+  }
+  
+  // Analyse en arrière plan des documents .tex du même
+  // répertoire que le document courant.
+  public void parse_related_documents ()
+  {
+    File dir = location.get_parent ();
     
-    // Analyse en arrière plan des documents .tex du même
-    // répertoire que le document courant.
-    public void parse_related_documents () {
+    // Parcours sur les fichiers du répertoire.
+    try {
+      FileEnumerator enumerator = dir.enumerate_children
+      (
+        "standard::*",
+        FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 
+        null
+      );
+      // Utilisé pour stocker les informations relatives
+      // à chaque fichier trouvé.
+      FileInfo info = null;
+          
+      while (((info = enumerator.next_file (null))!= null))
+      {
+        Document doc = new Document ();
+        File child = enumerator.get_child (info);
         
-        File dir = location.get_parent ();
-        
-        // Parcours sur les fichiers du répertoire.
-        try {
-            FileEnumerator enumerator = dir.enumerate_children
-            (
-                "standard::*",
-                FileQueryInfoFlags.NOFOLLOW_SYMLINKS, 
-                null
-            );
-            // Utilisé pour stocker les informations relatives
-            // à chaque fichier trouvé.
-            FileInfo info = null;
-                
-            while (((info = enumerator.next_file (null))
-                    != null))
-            {
-                Document doc = new Document ();
-                File child = enumerator.get_child (info);
-                
-                string file_path = child.get_parse_name ();
+        string file_path = child.get_parse_name ();
 
-                // Si le fichier trouvé est un fichier .tex, et
-                // qu'il n'a pas déjà été analysé.
-                if (file_path.has_suffix (".tex") && 
-                    (! already_parsed (file_path)))
-                    // Analyse de ce fichier uniquement
-                    // (passage de false en paramètre)
-                    doc.load (child, false);
-            }
-        } catch (Error e) {
-            warning ("%s", e.message);
-        }
+        // Si le fichier trouvé est un fichier .tex, et
+        // qu'il n'a pas déjà été analysé.
+        if (file_path.has_suffix (".tex") && 
+          (! already_parsed (file_path)))
+          // Analyse de ce fichier uniquement
+          // (passage de false en paramètre)
+          doc.load (child, false);
+      }
+    } catch (Error e) {
+        warning ("%s", e.message);
     }
+  }
 
-    // Méthode appellée lors de la sauvegarde du document.
-    // Nous lui avons ajouté une demande de parcours du
-    // document, afin de mettre à jour l'ensemble des
-    // choix de complétion de la table de hachage
-    // associée à ce document.
-    public void save (// ...)
-    {
-        // ...
-        parse();
-    }
+  // Méthode appellée lors de la sauvegarde du document.
+  // Nous lui avons ajouté une demande de parcours du
+  // document, afin de mettre à jour l'ensemble des
+  // choix de complétion de la table de hachage
+  // associée à ce document.
+  public void save (// ...)
+  {
+    // ...
+    parse();
+  }
 }
 \end{lstlisting}
 
@@ -430,42 +431,42 @@ Voici les différents appels modifiés.
 \begin{lstlisting}[frame=single]
 public class DocumentTab : Grid
 {
-    // Appellée lors de l'ouverture d'un document .tex.
-    public DocumentTab.from_location (File location)
+  // Appellée lors de l'ouverture d'un document .tex.
+  public DocumentTab.from_location (File location)
+  {
+    this ();
+    // Demande d'analyse des documents .tex du même
+    // répertoire.
+    document.load (location, true);
+  }
+  
+  // Lors du changement de document courant.
+  private bool view_focused_in ()
+  {
+    // ...
+    // Si le document à été modifié par un programme tiers,
+    // il faut de nouveau l'analyser.
+    if (document.is_externally_modified ())
     {
-        this ();
-        // Demande d'analyse des documents .tex du même
-        // répertoire.
-        document.load (location, true);
+      // ...
+      // On analyse le document.
+      // On fait ici le choix d'analyser aussi les
+      // documents du même répertoire, car rien
+      // n'indique qu'ils n'ont pas aussi été modifiés.
+      // Cette "mesure de sécurité" est en réalité
+      // indispensable.
+      document.load (document.location, true);
+      // ...
     }
-    
-    // Lors du changement de document courant.
-    private bool view_focused_in ()
-    {
-        // ...
-        // Si le document à été modifié par un programme tiers,
-        // il faut de nouveau l'analyser.
-        if (document.is_externally_modified ())
-        {
-            // ...
-            // On analyse le document.
-            // On fait ici le choix d'analyser aussi les
-            // documents du même répertoire, car rien
-            // n'indique qu'ils n'ont pas aussi été modifiés.
-            // Cette "mesure de sécurité" est en réalité
-            // indispensable.
-            document.load (document.location, true);
-            // ...
-        }
 
-        // Dans tous les cas, on change le contexte de
-        // complétion. On demande donc la mise à jour
-        // des choix de complétion proposés, en prenant
-        // en compte le répertoire parent du nouveau
-        // document courant.
-        document.notify_label_changed ();
-        // ...
-    }
+    // Dans tous les cas, on change le contexte de
+    // complétion. On demande donc la mise à jour
+    // des choix de complétion proposés, en prenant
+    // en compte le répertoire parent du nouveau
+    // document courant.
+    document.notify_label_changed ();
+    // ...
+  }
 }
 \end{lstlisting}
 
