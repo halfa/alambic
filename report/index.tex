@@ -64,18 +64,16 @@ Il met cependant à la disposition de l'utilisateur des outils puissant qui en f
 
 \section{Tâche à réaliser} % (fold)
 \label{sec:tache_a_realiser}
-Le but de cette étude pratique est d'ajouter à la complétion le support de la commande \textbf{\textbackslash{}ref} qui proposerait comme complétion une liste des clef des \textbf{\textbackslash{}label}.
-La tâche à réaliser est l'amélioration de la complétion des commandes de référence. Il existe un système déjà en place, celui-ci doit donc être amélioré.
+
+La tâche à réaliser est l'amélioration de la complétion des commandes de référence \textbf{\textbackslash{}ref\{clef\}}. Ces commandes permettent de créer un lien cliquable vers un endroit précis du document, qui est matérialisé par un \textbf{\textbackslash{}label\{clef\}}.
+
+Lorsque l'utilisateur souhaite réaliser une référence, la complétion doit lui proposer une liste des clefs possible.
 
 \subsection{La complétion dans LaTeXila 2.2}
 \label{sub:completion}
-La version 2.2 de Latexila fournit une complétion exhaustive des éléments statiques du langage \LaTeX{}se basant sur un fichier XML descriptif lu au démarrage du programme.
-Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au contenu précédemment tapé par l'utilisateur. Cette complétion propose :
-
-\begin{description}
-  \item[Fonction] de la forme \textbackslash\textit{fonction}\{argument\}, défini par \LaTeX{}
-  \item[Argument] peut être défini par \LaTeX{} ou tiré de l'environnement utilisateur\footnote{non pris en charge pour le moment car nécessite une complétion dynamique}
-\end{description}
+La version 2.2 de Latexila fournit une complétion exhaustive des éléments du langage \LaTeX{} en se basant sur un fichier XML descriptif lu au démarrage du programme.
+Cette complétion est donc dite \textit{statique}, car elle n'adapte pas les propositions en utilisant le contenu entré par l'utilisateur.
+Il lui est donc impossible de proposer une complétion pour \textbackslash{}ref.
 
 \subsection{Une complétion dynamique}
 \label{sub:completion_dyn}
@@ -143,7 +141,7 @@ Après discussion avec notre encadrant, nous avons décidé de limiter les choix
 Ce point est sujet à discussion, et nous y reviendrons par la suite.
 Nous nous sommes donc intéressés à la notion de fichier en Vala, et à leur manipulation.
 Les données sont désormais filtrées sur le chemin absolu du répertoire parent du document courant.
-D'autre part, nous avons décidé de dissocier le parseur des labels du parseur de la structure du document, séparant ainsi ces deux aspects distincts.
+D'autre part, nous avons décidé de dissocier l'analyseur des labels de celui qui se charge de la structure du document, séparant ainsi ces deux aspects distincts.
 
 %Le diagramme de séquence d'une analyse en arrière plan
 \begin{figure}[h]
@@ -161,7 +159,7 @@ Les choix proposés sont les labels déclarés dans les documents .tex du même 
 
 \subsection{Git}
 \label{sub:git}
-Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt git du projet Gnome\footnote{\url{git.gnome.org}}  et un miroir est également disponible sur Github\footnote{\url{https://github.com/GNOME/latexila}}.
+Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. Latexila est hébergé sur le dépôt git du projet Gnome\footnote{\url{git.gnome.org}}  et un miroir est également disponible sur Github\footnote{\url{https://github.com/GNOME/latexila}}.
 Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt principal.
 Un patch entre la \textbf{branche principale} et la \textbf{branche de test} est ensuite créé avec \texttt{git patch} et posté sur le bugzilla du projet\footnote{Exemple de la page de ce projet \url{https://bugzilla.gnome.org/show_bug.cgi?id=748069}}.
 
