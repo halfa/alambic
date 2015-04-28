@@ -41,17 +41,14 @@
 \chapter{Introduction}
 \label{cha:Introduction}
 
-Les \textit{études pratiques} sont des projets réalisés chaque année pas les élèves du département Informatique de l'INSA de Rennes.
-
-Elles s'étalent sur l'année scolaire et visent à permettre aux étudiants de développer leur sens du travail en équipe ainsi que leur autonomie.
-Les sujets sont aussi divers que variés, allant de prototypes applicatifs aux sites web, en passant par les réalisations d'IA.
+Les \textit{études pratiques} sont des projets réalisés chaque année pas les élèves du département Informatique de l'INSA de Rennes qui s'étalent sur 10 mois.
 
 Cette étude pratique en particulier se présente sous la forme d'une contribution à un logiciel dont le code source est libre, c'est à dire qu'il est mis à disposition du public qui peut s'il le souhaite proposer des améliorations.
 
 \section{Latexila}
 \label{sec:latexila}
 Latexila est un projet d'éditeur LaTeX pour le projet Gnome, dont le développement a commencé en 2009\footnote{Voir \url{https://wiki.gnome.org/Apps/LaTeXila/History}} à l'initiative de Sébastien Wilmet, qui est encore à ce jour le mainteneur du projet.
-Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. LaTeXiLa adopte une approche centrée sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}} par exemple.
+Bien que commencé en C, le projet a été porté vers le langage Vala en 2010. Latexila adopte une approche centrée sur le code, ce qui lui permet d'être bien plus léger que nombre d'autres éditeurs, comme TeXMaker\footnote{\url{http://www.xm1math.net/texmaker/index_fr.html}} par exemple.
 
 De par cette philosophie, il ne possède pas de module WYSIWYG\footnote{What You See Is What You Get - Un mode d'édition ou l'utilisateur édite directement une vue correspondant au rendu final}, ce qui le rend moins facile d'accès.
 Il met cependant à la disposition de l'utilisateur des outils puissant qui en font bien plus qu'un simple éditeur de texte, comme:
@@ -64,41 +61,26 @@ Il met cependant à la disposition de l'utilisateur des outils puissant qui en f
 
 \chapter{Étude pratique} % (fold)
 \label{cha:etude_pratique}
-Le but de cette étude pratique est d'ajouter à la complétion le support de la commande \textbf{\textbackslash{}ref} qui proposerait comme complétion une liste des clef des \textbf{\textbackslash{}label}.
 
 \section{Tâche à réaliser} % (fold)
 \label{sec:tache_a_realiser}
-La tâche à réaliser est l'amélioration de la complétion des commande de références. Il existe un système déjà en place, celui-ci doit donc être amélioré.
+Le but de cette étude pratique est d'ajouter à la complétion le support de la commande \textbf{\textbackslash{}ref} qui proposerait comme complétion une liste des clef des \textbf{\textbackslash{}label}.
+La tâche à réaliser est l'amélioration de la complétion des commandes de référence. Il existe un système déjà en place, celui-ci doit donc être amélioré.
 
 \subsection{La complétion dans LaTeXila 2.2}
 \label{sub:completion}
-La version 2.2 de Latexila fournit une complétion exhaustive des éléments statiques du langage \LaTeX~se basant sur un fichier XML descriptif lu au démarrage du programme.
+La version 2.2 de Latexila fournit une complétion exhaustive des éléments statiques du langage \LaTeX{}se basant sur un fichier XML descriptif lu au démarrage du programme.
 Cette complétion est donc dite \textit{statique}, car elle ne s'adapte pas au contenu précédemment tapé par l'utilisateur. Cette complétion propose :
 
 \begin{description}
-  \item[Fonction] de la forme \textbackslash\textit{fonction}\{argument\}, défini par \LaTeX
-  \item[Argument] peut être définit par \LaTeX~ou tiré de l'environnement utilisateur\footnote{non pris en charge car nécessite une complétion dynamique}
+  \item[Fonction] de la forme \textbackslash\textit{fonction}\{argument\}, défini par \LaTeX{}
+  \item[Argument] peut être défini par \LaTeX{} ou tiré de l'environnement utilisateur\footnote{non pris en charge pour le moment car nécessite une complétion dynamique}
 \end{description}
 
 \subsection{Une complétion dynamique}
 \label{sub:completion_dyn}
 Afin d'améliorer ce mécanisme de complétion pour qu'il prenne en charge l'argument de la commande \textbf{\textbackslash{}ref}, il convient de lui adjoindre une composante \textit{dynamique}, qui prendra en compte les éléments \textbf{\textbackslash{}label} déclarés par l'utilisateur.
 % section tâche_à_réaliser (end)
-
-\section{Gestion de projet} % (fold)
-
-\subsection{Git}
-\label{sub:git}
-Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt git du projet Gnome\footnote{\url{git.gnome.org}}  et un miroir est également disponible sur Github\footnote{\url{https://github.com/GNOME/latexila}}.
-Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt principal.
-Un patch entre la \textbf{branche principale} et la \textbf{branche de test} est ensuite créé avec \texttt{git patch} et posté sur le bugzilla du projet.
-
-\subsection{Bugzilla}
-Les soumissions\footnote{Propositions de contribution au projet} sont faites via le Bugzilla du projet Gnome.
-Bugzilla\footnote{\url{www.bugzilla.org}} est une plateforme de suivi de bug gratuite et libre, qui a vocation à faciliter la collaboration entre les développeurs.
-
-Une soumission de bug sur la plateforme du projet donne lieu à une page dédiée\footnote{Exemple de la page de ce projet \url{https://bugzilla.gnome.org/show_bug.cgi?id=748069}}, ce qui permet au mainteneur de commenter le rapport d'incident et le code soumis.
-Il s'ensuit ensuite un va-et-vient entre le mainteneur et le développeur jusqu'à la fusion du patch dans la branche principale du projet.
 
 \chapter{Réalisation}
 La réalisation s'est faite par petits pas. Sur une base de deux semaines de travail, l'équipe se donnait un objectif à atteindre pour le point suivant avec l'encadrant.
@@ -107,7 +89,7 @@ Ces points bi-mensuels permettaient de discuter des directions à prendre pour l
 \section{Intégration d'une recherche au document courant}
 Notre premier objectif a été de récupérer l'ensemble des labels déclarés dans le document courant.
 
-Après avoir analysé le code, nous avons décidé d'utiliser tout d'abord un parseur existant, celui permettant de construire l'arbre représentatif de la structure du document.
+Après avoir analysé le code, nous avons décidé d'utiliser tout d'abord un analyseur syntaxique \LaTeX{} fourni par Latexila. Il construit l'arbre représentatif de la structure du document.
 Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe utilisée jusqu'alors pour gérer la complétion statique, et mis à jour lors de l'ouverture et de la sauvegarde du document.
 
 % Le diagramme de fonctionnement du parser
@@ -127,14 +109,14 @@ Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe u
 \caption{Le diagramme UML de la structure de complétion.}
 \end{figure}
 
-À ce stade, la complétion prend en charge le document courant, mais l'utilisation du parseur déjà existant implique certaines contraintes, celle de ne pas pouvoir l'appeler quand on le souhaite.
+À ce stade, la complétion prend en charge le document courant, mais l'utilisation de l'analyseur syntaxique déjà existant implique certaines contraintes, celle de ne pas pouvoir l'appeler quand on le souhaite.
 La mise à jour de la complétion se fait donc en même temps que celle de l'arbre représentant la structure du document courant. 
 Ainsi lors du changement de document, par exemple, la complétion n'est pas mise à jour et n'est donc pas pertinente.
-D'autre part, on perd les précédentes données de complétion lors du parsage d'un autre document.
-Conserver ces données éviterai des parsage redondants et permettrait d'économiser du temps de calcul.
+D'autre part, on perd les précédentes données de complétion lors de l'analyse d'un autre document.
+Conserver ces données éviterai des analyses redondants et permettrait d'économiser du temps de calcul.
 
 \section{Intégration d'une recherche à plusieurs documents}
-L'étape suivante a été l'intégration de la complétion pour tous les documents ouverts dans LaTeXiLa, permettant ainsi de proposer une complétion propre à chaque document et d'éviter les propositions inappropriées.
+L'étape suivante a été l'intégration de la complétion pour tous les documents ouverts dans Latexila, permettant ainsi de proposer une complétion propre à chaque document et d'éviter les propositions inappropriées.
 Problèmes : comment choisir parmi les propositions celles liée au document courant ? Et comment stoker ces différents ensembles de choix de complétion de manière à pouvoir les mettre à jour ?
 
 Ceci nous a conduit à rechercher une structure de donnée adaptée, et à l'implémenter après avoir étudié la documentation de ces structures dans le langage Vala.
@@ -174,6 +156,15 @@ D'autre part, nous avons décidé de dissocier le parseur des labels du parseur 
 À ce stade, la complétion est entièrement fonctionnelle.
 Les choix proposés sont les labels déclarés dans les documents .tex du même répertoire que le document courant, l'analyse des documents est faite uniquement au besoin, et le changement de document courant vers un document d'un autre répertoire est fonctionnel.
 
+
+\section{Gestion de projet} % (fold)
+
+\subsection{Git}
+\label{sub:git}
+Git est le VCS\footnote{Version Control System} utilisé par la très grande majorité des projets open-source. LaTeXiLa est hébergé sur le dépôt git du projet Gnome\footnote{\url{git.gnome.org}}  et un miroir est également disponible sur Github\footnote{\url{https://github.com/GNOME/latexila}}.
+Pour ce projet, nous avons créé un \textit{fork} du dépôt principal sur Github et travaillé sur une branche annexe, régulièrement mise à jour à partir du dépôt principal.
+Un patch entre la \textbf{branche principale} et la \textbf{branche de test} est ensuite créé avec \texttt{git patch} et posté sur le bugzilla du projet\footnote{Exemple de la page de ce projet \url{https://bugzilla.gnome.org/show_bug.cgi?id=748069}}.
+
 \chapter{Conclusion}
 Le mécanisme de complétion, auparavant \textit{statique} prend désormais en charge une complétion \textit{dynamique} sur les labels déclarés par l'utilisateur.
 Cependant, notre solution est notamment critiquable sur le point suivant : le filtrage des choix de complétion proposés, sur le répertoire parent du document courant.
@@ -182,11 +173,10 @@ De plus, il arrive que certains fichiers .tex ne soient que des anciennes versio
 
 Nous avons tout de même soumis ce patch au mainteneur du projet, monsieur Wilmet, qui nous a fait part de ses commentaires.
 
-Après discussion avec notre encadrant et monsieur Wilmet, nous avons établi que pour palier à ces problèmes, une refonte de la notion de \textit{projet} comme ils sont organisés dans LaTeXiLa était nécessaire.
+Après discussion avec notre encadrant et monsieur Wilmet, nous avons établi que pour palier à ces problèmes, une refonte de la notion de \textit{projet} comme ils sont organisés dans Latexila était nécessaire.
 On pourrait ainsi proposer une complétion ne prenant en compte que les fichiers faisant partie du même projet, et éviter les points précédemment soulevés.
 
 Cette étude pratique a été pour nous l'occasion de découvrir le fonctionnement des projets open-source.
-
 
 \section*{\centerline{Remerciements}} % (fold)
 \begin{center}
