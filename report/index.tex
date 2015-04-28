@@ -107,11 +107,11 @@ Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe u
 \caption{Le diagramme UML de la structure de complétion.}
 \end{figure}
 
-À ce stade, la complétion prend en charge le document courant, mais l'utilisation de l'analyseur syntaxique déjà existant implique certaines contraintes, celle de ne pas pouvoir l'appeler quand on le souhaite.
+À ce stade, la complétion prend en charge le document courant, mais l'utilisation de l'analyseur syntaxique déjà existant implique certaines contraintes, dont celle de ne pas pouvoir l'appeler quand on le souhaite.
 La mise à jour de la complétion se fait donc en même temps que celle de l'arbre représentant la structure du document courant. 
 Ainsi lors du changement de document, par exemple, la complétion n'est pas mise à jour et n'est donc pas pertinente.
 D'autre part, on perd les précédentes données de complétion lors de l'analyse d'un autre document.
-Conserver ces données éviterai des analyses redondants et permettrait d'économiser du temps de calcul.
+Conserver ces données éviterai des analyses redondantes et permettrait d'économiser du temps de calcul.
 
 \section{Intégration d'une recherche à plusieurs documents}
 L'étape suivante a été l'intégration de la complétion pour tous les documents ouverts dans Latexila, permettant ainsi de proposer une complétion propre à chaque document et d'éviter les propositions inappropriées.
@@ -132,16 +132,17 @@ Les choix de complétion proposés à l'utilisateur sont ceux du document couran
 Ceux-ci sont mis à jour lors de l'appel de l'utilisateur au gestionnaire de complétion. Ainsi, même lors du changement de document, ces choix sont filtrés pour le nouveau document.
 
 À ce stade, la complétion est fonctionnelle pour tous les fichiers ouverts, les données ne sont pas perdues, leur mise à jour est cohérente, et la mise à jour des choix de complétion du gestionnaire de complétion est faite de façon efficace (mise à jour uniquement si nécessaire, donc si l'utilisateur change de document, ou s'il sauvegarde un document).
-Cependant, il reste des problèmes : les choix de complétion ne contiennent que les labels déclarés dans le document courant, alors que le principe du langage \LaTeX{} est de permettre les références entre documents.
+Cependant, il reste des problèmes : les choix de complétion ne contiennent que les labels déclarés dans le document courant, alors que l'un des avantages du langage \LaTeX{} est de permettre les références entre entre différents fichiers composant un même projet.
 Il faut donc revoir le filtrage des choix de complétion.
 Cet aspect nous conduit également à proposer des choix de complétion provenant de documents qui n'ont pas été ouverts.
 
 \section{Intégration des fichiers non-ouverts}
 Après discussion avec notre encadrant, nous avons décidé de limiter les choix de complétion pour un document à l'ensemble des labels déclarés dans les documents .tex de son répertoire.
-Ce point est sujet à discussion, et nous y reviendrons par la suite.
+Ce point est sujet à discussion, et nous y reviendrons durant la conclusion. 
 Nous nous sommes donc intéressés à la notion de fichier en Vala, et à leur manipulation.
-Les données sont désormais filtrées sur le chemin absolu du répertoire parent du document courant.
-D'autre part, nous avons décidé de dissocier l'analyseur des labels de celui qui se charge de la structure du document, séparant ainsi ces deux aspects distincts.
+% Les données sont désormais filtrées sur le chemin absolu du répertoire parent du document courant.
+D'une part, nous avons modifié notre structure de donnée pour que la clé de la table de hachage qui contient nos données de complétion soit désormais le chemin absolu du répertoire parent du document courant. % Je veux votre approbtion
+D'autre part, nous avons décidé de dissocier la complétion des labels du processus qui se charge de la structure du document, séparant ainsi ces deux aspects distincts.
 
 %Le diagramme de séquence d'une analyse en arrière plan
 \begin{figure}[h]
@@ -172,7 +173,7 @@ De plus, il arrive que certains fichiers .tex ne soient que des anciennes versio
 Nous avons tout de même soumis ce patch au mainteneur du projet, monsieur Wilmet, qui nous a fait part de ses commentaires.
 
 Après discussion avec notre encadrant et monsieur Wilmet, nous avons établi que pour palier à ces problèmes, une refonte de la notion de \textit{projet} comme ils sont organisés dans Latexila était nécessaire.
-On pourrait ainsi proposer une complétion ne prenant en compte que les fichiers faisant partie du même projet, et éviter les points précédemment soulevés.
+On pourrait ainsi proposer une complétion ne prenant en compte que les fichiers faisant partie du même projet, et éviter les problèmes précédemment soulevés.
 
 Cette étude pratique a été pour nous l'occasion de découvrir le fonctionnement des projets open-source.
 
