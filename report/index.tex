@@ -138,10 +138,9 @@ Cet aspect nous conduit également à proposer des choix de complétion provenan
 
 \section{Intégration des fichiers non-ouverts}
 Après discussion avec notre encadrant, nous avons décidé de limiter les choix de complétion pour un document à l'ensemble des labels déclarés dans les documents .tex de son répertoire.
-Ce point est sujet à discussion, et nous y reviendrons durant la conclusion. 
-Nous nous sommes donc intéressés à la notion de fichier en Vala, et à leur manipulation.
-% Les données sont désormais filtrées sur le chemin absolu du répertoire parent du document courant.
-D'une part, nous avons modifié notre structure de donnée pour que la clé de la table de hachage qui contient nos données de complétion soit désormais le chemin absolu du répertoire parent du document courant. % Je veux votre approbtion
+Ce point est sujet à discussion, et nous y reviendrons durant la conclusion.
+
+D'une part, nous avons modifié notre structure de donnée pour que la clé de la table de hachage qui contient nos données de complétion soit désormais le chemin absolu du répertoire parent du document courant.
 D'autre part, nous avons décidé de dissocier la complétion des labels du processus qui se charge de la structure du document, séparant ainsi ces deux aspects distincts.
 
 %Le diagramme de séquence d'une analyse en arrière plan
@@ -166,8 +165,8 @@ Un patch entre la \textbf{branche principale} et la \textbf{branche de test} est
 
 \chapter{Conclusion}
 Le mécanisme de complétion, auparavant \textit{statique} prend désormais en charge une complétion \textit{dynamique} sur les labels déclarés par l'utilisateur.
-Cependant, notre solution est notamment critiquable sur le point suivant : le filtrage des choix de complétion proposés, sur le répertoire parent du document courant.
-En effet, certains utilisateurs sont susceptibles d'utiliser des sous-répertoires pour organiser leurs fichiers, et ne bénéficieraient donc pas de la complétion souhaitée.
+Cependant, notre solution impose que les fichiers sources dont sont issues les labels se trouvent dans le même répertoire que le document ouvert.
+Or certains utilisateurs sont susceptibles d'utiliser des sous-répertoires pour organiser leurs fichiers, et ne bénéficieraient donc pas de la complétion souhaitée.
 De plus, il arrive que certains fichiers .tex ne soient que des anciennes versions de rapports, voire des fichiers de tests. Dans ce cas, notre mécanisme de complétion proposerait les labels déclarés dans ces fichiers, alors qu'ils ne sont pas souhaités.
 
 Nous avons tout de même soumis ce patch au mainteneur du projet, monsieur Wilmet, qui nous a fait part de ses commentaires.
@@ -175,12 +174,10 @@ Nous avons tout de même soumis ce patch au mainteneur du projet, monsieur Wilme
 Après discussion avec notre encadrant et monsieur Wilmet, nous avons établi que pour palier à ces problèmes, une refonte de la notion de \textit{projet} comme ils sont organisés dans Latexila était nécessaire.
 On pourrait ainsi proposer une complétion ne prenant en compte que les fichiers faisant partie du même projet, et éviter les problèmes précédemment soulevés.
 
-Cette étude pratique a été pour nous l'occasion de découvrir le fonctionnement des projets open-source.
-
 \section*{\centerline{Remerciements}} % (fold)
 \begin{center}
 \label{sec:remerciements}
-Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de Latexila, pour l'aide qu'il nous a apporté.
+Nous remercions Arnaud Blouin, notre encadrant, pour sa disponibilité et ses conseils, ainsi que Sébastien Wilmet, développeur et mainteneur de Latexila, pour l'aide qu'il nous a apporté dans ce premier pas dans l'univers du logiciel libre.
 \end{center}
 
 \end{document}
