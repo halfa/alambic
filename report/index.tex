@@ -107,9 +107,10 @@ Ces résultats sont ensuite intégrés au \textit{Completion Provider}, classe u
 \caption{Le diagramme UML de la structure de complétion.}
 \end{figure}
 
-À ce stade, la complétion prend en charge le document courant, mais l'utilisation de l'analyseur syntaxique déjà existant implique certaines contraintes, dont celle de ne pas pouvoir l'appeler quand on le souhaite.
+A ce stade, la complétion est alimentée par l'analyseur syntaxique déjà éxistant qui est utilisé par l'arbre de structure du document courant. 
+Cela implique certaines contraintes comme de ne pas pouvoir l'appeler quand on le souhaite.
 La mise à jour de la complétion se fait donc en même temps que celle de l'arbre représentant la structure du document courant. 
-Ainsi lors du changement de document, par exemple, la complétion n'est pas mise à jour et n'est donc pas pertinente.
+Ainsi lors du changement de document, par exemple, la complétion n'est pas mise à jour et est donc moins pertinente.
 D'autre part, on perd les précédentes données de complétion lors de l'analyse d'un autre document.
 Conserver ces données éviterai des analyses redondantes et permettrait d'économiser du temps de calcul.
 
