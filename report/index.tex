@@ -132,15 +132,16 @@ Les choix de complétion proposés à l'utilisateur sont ceux du document couran
 Ceux-ci sont mis à jour lors de l'appel de l'utilisateur au gestionnaire de complétion. Ainsi, même lors du changement de document, ces choix sont filtrés pour le nouveau document.
 
 À ce stade, la complétion est fonctionnelle pour tous les fichiers ouverts, les données ne sont pas perdues, leur mise à jour est cohérente, et la mise à jour des choix de complétion du gestionnaire de complétion est faite de façon efficace (mise à jour uniquement si nécessaire, donc si l'utilisateur change de document, ou s'il sauvegarde un document).
-Cependant, il reste des problèmes : les choix de complétion ne contiennent que les labels déclarés dans le document courant, alors que l'un des avantages du langage \LaTeX{} est de permettre les références entre entre différents fichiers composant un même projet.
+Cependant, il reste un problème : la complétion ne propose que les labels déclarés dans le document courant, alors que \LaTeX{} permet les références entre entre différents fichiers.
 Il faut donc revoir le filtrage des choix de complétion.
+
 Cet aspect nous conduit également à proposer des choix de complétion provenant de documents qui n'ont pas été ouverts.
 
 \section{Intégration des fichiers non-ouverts}
 Après discussion avec notre encadrant, nous avons décidé de limiter les choix de complétion pour un document à l'ensemble des labels déclarés dans les documents .tex de son répertoire.
 Ce point est sujet à discussion, et nous y reviendrons durant la conclusion.
 
-D'une part, nous avons modifié notre structure de donnée pour que la clé de la table de hachage qui contient nos données de complétion soit désormais le chemin absolu du répertoire parent du document courant.
+Pour ce faire, nous avons d'une part modifié notre structure de donnée pour que la clé de la table de hachage qui contient nos données de complétion soit désormais le chemin absolu du répertoire parent du document courant.
 D'autre part, nous avons décidé de dissocier la complétion des labels du processus qui se charge de la structure du document, séparant ainsi ces deux aspects distincts.
 
 %Le diagramme de séquence d'une analyse en arrière plan
@@ -152,8 +153,7 @@ D'autre part, nous avons décidé de dissocier la complétion des labels du proc
 \end{figure}
 
 À ce stade, la complétion est entièrement fonctionnelle.
-Les choix proposés sont les labels déclarés dans les documents .tex du même répertoire que le document courant, l'analyse des documents est faite uniquement au besoin, et le changement de document courant vers un document d'un autre répertoire est fonctionnel.
-
+Les choix proposés sont les labels déclarés dans les documents .tex du même répertoire que le document courant, l'analyse des documents est faite uniquement au besoin, et le changement de document vers un document d'un autre répertoire modifie correctement les propositions fournies.
 
 \section{Gestion de projet} % (fold)
 
