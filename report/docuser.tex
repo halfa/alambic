@@ -25,7 +25,7 @@
 
 %% ** Begin document ** %%
 
-\title{Étude pratique : Amélioration de la complétion automatique de \LaTeX{}ila}
+\title{Étude pratique : Amélioration de la complétion automatique de \LaTeX{}ila  : Documentation Technique}
 \author{Axel Caro\and François Boschet\and Maximilien Richer}
 \date{2014-2015}
 
@@ -38,7 +38,7 @@
 
 \chapter{Introduction}
 \label{cha:Introduction}
-Ce document contient la document utilisateur de notre mécanisme de complétion dynamique de la commande \textbf{\textbackslash{}ref} que nous avons ajouté au logiciel \LaTeX{}ila.
+Ce document contient la documentation utilisateur du mécanisme de complétion dynamique de la commande \textbf{\textbackslash{}ref} que nous avons ajouté au logiciel \LaTeX{}ila.
 Pour plus de détails sur le projet, veuillez vous référer au rapport complet.
 
 \chapter{Installation de \LaTeX{}ila}
@@ -47,7 +47,7 @@ Pour plus de détails sur le projet, veuillez vous référer au rapport complet.
 \section{Dépôts officiels}
 \label{sec:depots}
 
-\LaTeX{}ila est disponible au téléchargement dans les dépôts officiels de plusieurs distribution comme :
+\LaTeX{}ila est disponible en téléchargement dans les dépôts officiels de plusieurs distribution comme :
 \begin{itemize}
 \item Arch Linux
 \item Debian
@@ -61,13 +61,15 @@ Pour plus de détails sur le projet, veuillez vous référer au rapport complet.
 
 Vous pouvez aussi compiler \LaTeX{}ila via les sources. Soit en les téléchargeant sur le serveur ftp de gnome\footnote{\url{http://ftp.gnome.org/pub/GNOME/sources/latexila/}} soit en clonant le dépot git\footnote{\url{https://git.gnome.org/browse/latexila}}.
 
-Vous pouvez également suivre le guide que nous avons réalisé qui explique comment installer la dernière version de Latexila en utilisant l'utilitaire Jhbuild disponible sur notre dépot git\footnote{\url{https://github.com/halfa/alambic/blob/master/report/howtoContribFromScratch.md}}
+Vous pouvez également suivre le guide que nous avons réalisé qui explique comment installer la dernière version de Latexila en utilisant l'utilitaire Jhbuild disponible sur notre dépôt git\footnote{\url{https://github.com/halfa/alambic/blob/master/report/howtoContribFromScratch.md}}
 
 \chapter{Utilisation de la complétion}
 
-\LaTeX{}ila propose une complétion automatique des proncipales commandes \LaTeX{}. Avec notre projet, le logiciel propose aussi la complétion pour la commande \textbf{\textbackslash{}ref}.
+\LaTeX{}ila propose une complétion automatique des principales commandes \LaTeX{}. Avec notre projet, le logiciel propose aussi la complétion pour la commande \textbf{\textbackslash{}ref}.
 
-Le fonctionnement est très simple. Vous créé un label, via la commande \textbf{\textbackslash{}label}, dans un fichier, et l'invite de complétion vous proposera ce label pour compléter les arguments de la commande \textbf{\textbackslash{}ref}. 
-
+Le fonctionnement en est très simple : vous pouvez désormais faire appel à l'invite de complétion sur la commande \textbf{\textbackslash{}ref}.
+Vous pourrez alors choisir une complétion parmi tous les intitulés des labels que vous aurez déclaré dans votre fichier.
+Les labels déclarés dans les fichiers tex du même répertoire que celui de votre document actif sont également porposés.
+Si vous déclarez ou modifiez un label, il est impératif de sauvegarder votre document afin que la complétion soit mise à jour.
 
 \end{document}
