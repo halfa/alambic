@@ -1,0 +1,73 @@
+\documentclass[a4paper,11pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{titlesec}
+\usepackage{exptech}
+\usepackage{listings}
+\usepackage{hyperref}
+\usepackage{color}
+
+% Pour les figures
+\usepackage{pstricks}
+\usepackage{epsfig}
+\usepackage[justification=centering]{caption}
+\usepackage{tikz}
+
+\setlength{\parskip}{1em}
+% Random code from stackoverflow refining chapters
+% See http://tex.stackexchange.com/questions/110840/how-to-remove-chapter-numbering-without-removing-it-from-tableofcontents
+\titleformat{\chapter}
+  {\Large\bfseries} % format
+  {}                % label
+  {0pt}             % sep
+  {\huge}         % before-code
+
+%% ** Begin document ** %%
+
+\title{Étude pratique : Amélioration de la complétion automatique de \LaTeX{}ila}
+\author{Axel Caro\and François Boschet\and Maximilien Richer}
+\date{2014-2015}
+
+\begin{document}
+
+% Configuration pour le code
+\include{./lst_config}
+
+\maketitle %affichage du titre
+
+\chapter{Introduction}
+\label{cha:Introduction}
+Ce document contient la document utilisateur de notre mécanisme de complétion dynamique de la commande \textbf{\textbackslash{}ref} que nous avons ajouté au logiciel \LaTeX{}ila.
+Pour plus de détails sur le projet, veuillez vous référer au rapport complet.
+
+\chapter{Installation de \LaTeX{}ila}
+\label{cha:Installation}
+
+\section{Dépôts officiels}
+\label{sec:depots}
+
+\LaTeX{}ila est disponible au téléchargement dans les dépôts officiels de plusieurs distribution comme :
+\begin{itemize}
+\item Arch Linux
+\item Debian
+\item Fedora
+\item Gentoo
+\item Ubuntu
+\end{itemize}
+
+\section{Sources}
+\label{sec:sources}
+
+Vous pouvez aussi compiler \LaTeX{}ila via les sources. Soit en les téléchargeant sur le serveur ftp de gnome\footnote{\url{http://ftp.gnome.org/pub/GNOME/sources/latexila/}} soit en clonant le dépot git\footnote{\url{https://git.gnome.org/browse/latexila}}.
+
+Vous pouvez également suivre le guide que nous avons réalisé qui explique comment installer la dernière version de Latexila en utilisant l'utilitaire Jhbuild disponible sur notre dépot git\footnote{\url{https://github.com/halfa/alambic/blob/master/report/howtoContribFromScratch.md}}
+
+\chapter{Utilisation de la complétion}
+
+\LaTeX{}ila propose une complétion automatique des proncipales commandes \LaTeX{}. Avec notre projet, le logiciel propose aussi la complétion pour la commande \textbf{\textbackslash{}ref}.
+
+Le fonctionnement est très simple. Vous créé un label, via la commande \textbf{\textbackslash{}label}, dans un fichier, et l'invite de complétion vous proposera ce label pour compléter les arguments de la commande \textbf{\textbackslash{}ref}. 
+
+
+\end{document}
