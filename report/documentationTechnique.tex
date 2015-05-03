@@ -36,7 +36,7 @@
 Ce document contient le code détaillé et commenté que nous avons incorporé au projet LaTeXiLa, afin d'implémenter le mécanisme de complétion dynamique de la commande \textbf{\textbackslash{}ref}.
 Pour plus de détails sur le projet, veuillez vous référer au rapport complet.
 
-\\\textit{Remarque} : dans la suite du document, les notations suivantes seront utilisées.
+\textit{Remarque} : dans la suite du document, les notations suivantes seront utilisées.
 
 \begin{description}
   \item[// ...] représente une partie de code inchangée, et donc non explicitée.
@@ -190,7 +190,8 @@ L'ajout de données dans la table de hachage est fait par les instances de la cl
 
 La classe Document représente les documents ouverts dans LaTeXiLa.
 Afin d'implémenter notre solution, nous y avons apporté les modifications suivantes.
-\\\textit{Remarque} : Le code du parseur du contenu d'un document, permettant de détecter la déclaration des labels, n'est pas explicité. En effet, il s'agit du même parseur que celui utilisé par les instances de la classe DocumentStructure, allégé pour nos besoins. Les appels importants tels que l'ajout d'un label, sont néanmoins mentionnés.
+
+\textit{Remarque} : Le code du parseur du contenu d'un document, permettant de détecter la déclaration des labels, n'est pas explicité. En effet, il s'agit du même parseur que celui utilisé par les instances de la classe DocumentStructure, allégé pour nos besoins. Les appels importants tels que l'ajout d'un label, sont néanmoins mentionnés.
 
 \section{Structure de Donnée}
 \label{sec:D_structure_de_données}
@@ -472,6 +473,8 @@ public class DocumentTab : Grid
 
 En résumé, un document peut être analysé dans deux cas : s'il s'agit de l'ouverture du document ou s'il a été modifié par l'extérieur, l'analyse les documents .tex du même répertoire est nécessaire.
 Dans ce cas, on effectue un parcours sur les fichiers .tex du même répertoire, et on met à jour les entrées de la table de hachage du gestionnaire de complétion.
-\\Au contraire, s'il s'agit d'un changement de document courant, on change simplement le contexte de complétion, forcant ainsi la mise à jour des choix de complétion proposés à l'utilisateur si ce dernier fait appel au gestionnaire de complétion.
-\\Le parcours d'un document est également fait à chaque sauvegarde, permettant ainsi de toujours garder à jour les entrées de la table de hachage. Lors du prochain appel au gestionnaire de complétion, les choix proposés seront de nouveau filtrés, et seront donc pertinents.
+
+Au contraire, s'il s'agit d'un changement de document courant, on change simplement le contexte de complétion, forcant ainsi la mise à jour des choix de complétion proposés à l'utilisateur si ce dernier fait appel au gestionnaire de complétion.
+
+Le parcours d'un document est également fait à chaque sauvegarde, permettant ainsi de toujours garder à jour les entrées de la table de hachage. Lors du prochain appel au gestionnaire de complétion, les choix proposés seront de nouveau filtrés, et seront donc pertinents.
 \end{document}
